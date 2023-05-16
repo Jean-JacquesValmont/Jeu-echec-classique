@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://s518ncxtttsy"]
+
+[ext_resource type="Texture2D" uid="uid://brkw7uhdbhita" path="res://Image/Pièces/Black/Pawn_black.png" id="1_b2v8r"]
+[ext_resource type="Script" path="res://Pawn_black.gd" id="2_y0sbt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vmjg7"]
+size = Vector2(90, 90)
+
+[node name="Pawn_black" type="Sprite2D"]
+texture = ExtResource("1_b2v8r")
+centered = false
+script = ExtResource("2_y0sbt")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(50, 50)
+shape = SubResource("RectangleShape2D_vmjg7")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

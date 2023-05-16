@@ -1,0 +1,155 @@
+[gd_scene load_steps=15 format=3 uid="uid://dvy4wdx8kqx6n"]
+
+[ext_resource type="Texture2D" uid="uid://dwdxf75sahxay" path="res://Image/Plateau/Plateau d'échec Version Bois.png" id="1_ngoat"]
+[ext_resource type="Script" path="res://Plateau_echec.gd" id="2_tfyql"]
+[ext_resource type="PackedScene" uid="uid://das4nxkuiwyf8" path="res://pawn_white.tscn" id="2_txj3q"]
+[ext_resource type="PackedScene" uid="uid://s518ncxtttsy" path="res://pawn_black.tscn" id="3_apq86"]
+[ext_resource type="PackedScene" uid="uid://prfaw1x4emuo" path="res://knight_white.tscn" id="4_g4f3a"]
+[ext_resource type="PackedScene" uid="uid://b3oc0y8y20iqs" path="res://bishop_white.tscn" id="4_v0trg"]
+[ext_resource type="PackedScene" uid="uid://51s3874kvdat" path="res://rook_white.tscn" id="5_5vehg"]
+[ext_resource type="PackedScene" uid="uid://c5dnctnumk1bp" path="res://rook_black.tscn" id="6_j6mi8"]
+[ext_resource type="PackedScene" uid="uid://ca0xk6bsynd1" path="res://bishop_black.tscn" id="7_3b01d"]
+[ext_resource type="PackedScene" uid="uid://cevde6o4k1om7" path="res://queen_white.tscn" id="7_xtomi"]
+[ext_resource type="PackedScene" uid="uid://dc7awd2swpff1" path="res://king_white.tscn" id="8_2a3sh"]
+[ext_resource type="PackedScene" uid="uid://c5s4ca5vb55gq" path="res://knight_black.tscn" id="8_6jpi4"]
+[ext_resource type="PackedScene" uid="uid://ctu8raach5dy1" path="res://queen_black.tscn" id="12_omt7s"]
+[ext_resource type="PackedScene" uid="uid://c2lwvhbplnyu4" path="res://king_black.tscn" id="14_fse2i"]
+
+[node name="Plateau_echec" type="Sprite2D"]
+texture = ExtResource("1_ngoat")
+centered = false
+script = ExtResource("2_tfyql")
+
+[node name="Pawn_white" parent="." instance=ExtResource("2_txj3q")]
+position = Vector2(0, 600)
+
+[node name="Pawn_white2" parent="." instance=ExtResource("2_txj3q")]
+position = Vector2(100, 600)
+
+[node name="Pawn_white3" parent="." instance=ExtResource("2_txj3q")]
+position = Vector2(200, 600)
+
+[node name="Pawn_white4" parent="." instance=ExtResource("2_txj3q")]
+position = Vector2(300, 600)
+
+[node name="Pawn_white5" parent="." instance=ExtResource("2_txj3q")]
+position = Vector2(400, 600)
+
+[node name="Pawn_white6" parent="." instance=ExtResource("2_txj3q")]
+position = Vector2(500, 600)
+
+[node name="Pawn_white7" parent="." instance=ExtResource("2_txj3q")]
+position = Vector2(600, 600)
+
+[node name="Pawn_white8" parent="." instance=ExtResource("2_txj3q")]
+position = Vector2(700, 600)
+
+[node name="Knight_white" parent="." instance=ExtResource("4_g4f3a")]
+position = Vector2(100, 700)
+
+[node name="Knight_white2" parent="." instance=ExtResource("4_g4f3a")]
+position = Vector2(600, 700)
+
+[node name="Bishop_white" parent="." instance=ExtResource("4_v0trg")]
+position = Vector2(200, 700)
+
+[node name="Bishop_white2" parent="." instance=ExtResource("4_v0trg")]
+position = Vector2(500, 700)
+
+[node name="Rook_white" parent="." instance=ExtResource("5_5vehg")]
+position = Vector2(0, 700)
+
+[node name="Rook_white2" parent="." instance=ExtResource("5_5vehg")]
+position = Vector2(700, 700)
+
+[node name="Queen_white" parent="." instance=ExtResource("7_xtomi")]
+position = Vector2(300, 700)
+
+[node name="King_white" parent="." instance=ExtResource("8_2a3sh")]
+position = Vector2(400, 700)
+
+[node name="Pawn_black" parent="." instance=ExtResource("3_apq86")]
+position = Vector2(0, 100)
+
+[node name="Pawn_black2" parent="." instance=ExtResource("3_apq86")]
+position = Vector2(100, 100)
+
+[node name="Pawn_black3" parent="." instance=ExtResource("3_apq86")]
+position = Vector2(200, 100)
+
+[node name="Pawn_black4" parent="." instance=ExtResource("3_apq86")]
+position = Vector2(300, 100)
+
+[node name="Pawn_black5" parent="." instance=ExtResource("3_apq86")]
+position = Vector2(400, 100)
+
+[node name="Pawn_black6" parent="." instance=ExtResource("3_apq86")]
+position = Vector2(500, 100)
+
+[node name="Pawn_black7" parent="." instance=ExtResource("3_apq86")]
+position = Vector2(600, 100)
+
+[node name="Pawn_black8" parent="." instance=ExtResource("3_apq86")]
+position = Vector2(700, 100)
+
+[node name="Knight_black" parent="." instance=ExtResource("8_6jpi4")]
+position = Vector2(100, 0)
+
+[node name="Knight_black2" parent="." instance=ExtResource("8_6jpi4")]
+position = Vector2(600, 0)
+
+[node name="Bishop_black" parent="." instance=ExtResource("7_3b01d")]
+position = Vector2(200, 0)
+
+[node name="Bishop_black2" parent="." instance=ExtResource("7_3b01d")]
+position = Vector2(500, 0)
+
+[node name="Rook_black" parent="." instance=ExtResource("6_j6mi8")]
+
+[node name="Rook_black2" parent="." instance=ExtResource("6_j6mi8")]
+position = Vector2(700, 0)
+
+[node name="Queen_black" parent="." instance=ExtResource("12_omt7s")]
+position = Vector2(300, 0)
+
+[node name="King_black" parent="." instance=ExtResource("14_fse2i")]
+position = Vector2(400, 0)
+
+[connection signal="opponent_turned" from="Pawn_white" to="." method="_on_pawn_white_opponent_turned"]
+[connection signal="opponent_turned" from="Pawn_white2" to="." method="_on_pawn_white_2_opponent_turned"]
+[connection signal="opponent_turned" from="Pawn_white3" to="." method="_on_pawn_white_3_opponent_turned"]
+[connection signal="opponent_turned" from="Pawn_white4" to="." method="_on_pawn_white_4_opponent_turned"]
+[connection signal="opponent_turned" from="Pawn_white5" to="." method="_on_pawn_white_5_opponent_turned"]
+[connection signal="opponent_turned" from="Pawn_white6" to="." method="_on_pawn_white_6_opponent_turned"]
+[connection signal="opponent_turned" from="Pawn_white7" to="." method="_on_pawn_white_7_opponent_turned"]
+[connection signal="opponent_turned" from="Pawn_white8" to="." method="_on_pawn_white_8_opponent_turned"]
+[connection signal="opponent_turned" from="Knight_white" to="." method="_on_knight_white_opponent_turned"]
+[connection signal="opponent_turned" from="Knight_white2" to="." method="_on_knight_white_2_opponent_turned"]
+[connection signal="opponent_turned" from="Bishop_white" to="." method="_on_bishop_white_opponent_turned"]
+[connection signal="opponent_turned" from="Bishop_white2" to="." method="_on_bishop_white_2_opponent_turned"]
+[connection signal="opponent_turned" from="Rook_white" to="." method="_on_rook_white_opponent_turned"]
+[connection signal="opponent_turned" from="Rook_white2" to="." method="_on_rook_white_2_opponent_turned"]
+[connection signal="opponent_turned" from="Queen_white" to="." method="_on_queen_white_opponent_turned"]
+[connection signal="Grand_roque" from="King_white" to="Rook_white" method="_on_king_white_grand_roque"]
+[connection signal="Petit_roque" from="King_white" to="Rook_white2" method="_on_king_white_petit_roque"]
+[connection signal="check_to_the_king" from="King_white" to="." method="_on_king_white_check_to_the_king"]
+[connection signal="checkmate_to_the_king" from="King_white" to="." method="_on_king_white_checkmate_to_the_king"]
+[connection signal="opponent_turned" from="King_white" to="." method="_on_king_white_opponent_turned"]
+[connection signal="opponent_turned" from="Pawn_black" to="." method="_on_pawn_black_opponent_turned"]
+[connection signal="opponent_turned" from="Pawn_black2" to="." method="_on_pawn_black_2_opponent_turned"]
+[connection signal="opponent_turned" from="Pawn_black3" to="." method="_on_pawn_black_3_opponent_turned"]
+[connection signal="opponent_turned" from="Pawn_black4" to="." method="_on_pawn_black_4_opponent_turned"]
+[connection signal="opponent_turned" from="Pawn_black5" to="." method="_on_pawn_black_5_opponent_turned"]
+[connection signal="opponent_turned" from="Pawn_black6" to="." method="_on_pawn_black_6_opponent_turned"]
+[connection signal="opponent_turned" from="Pawn_black7" to="." method="_on_pawn_black_7_opponent_turned"]
+[connection signal="opponent_turned" from="Pawn_black8" to="." method="_on_pawn_black_8_opponent_turned"]
+[connection signal="opponent_turned" from="Knight_black" to="." method="_on_knight_black_opponent_turned"]
+[connection signal="opponent_turned" from="Knight_black2" to="." method="_on_knight_black_2_opponent_turned"]
+[connection signal="opponent_turned" from="Bishop_black" to="." method="_on_bishop_black_opponent_turned"]
+[connection signal="opponent_turned" from="Bishop_black2" to="." method="_on_bishop_black_2_opponent_turned"]
+[connection signal="opponent_turned" from="Rook_black" to="." method="_on_rook_black_opponent_turned"]
+[connection signal="opponent_turned" from="Rook_black2" to="." method="_on_rook_black_2_opponent_turned"]
+[connection signal="opponent_turned" from="Queen_black" to="." method="_on_queen_black_opponent_turned"]
+[connection signal="check_to_the_king" from="King_black" to="." method="_on_king_black_check_to_the_king"]
+[connection signal="checkmate_to_the_king" from="King_black" to="." method="_on_king_black_checkmate_to_the_king"]
+[connection signal="opponent_turned" from="King_black" to="." method="_on_king_black_opponent_turned"]
