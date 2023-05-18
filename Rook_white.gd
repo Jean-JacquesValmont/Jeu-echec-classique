@@ -493,7 +493,9 @@ func _input(event):
 func _on_area_2d_area_entered(area):
 	if player_turn == "black":
 		get_node("/root/Plateau_echec/" + area.get_parent().get_name()).queue_free()
-		print(area.get_parent().get_name())
+		print("piece pris: ",area.get_parent().get_name())
+	else:
+		pass
 
 func verif_piece_protects_against_an_attack_the_king():
 	#On regarde d'où vient l'attaque

@@ -496,8 +496,9 @@ func _input(event):
 func _on_area_2d_area_entered(area):
 	if player_turn == "white":
 		get_node("/root/Plateau_echec/" + area.get_parent().get_name()).queue_free()
-		print(area.get_parent().get_name())
-
+		print("piece pris: ",area.get_parent().get_name())
+	else:
+		pass
 
 func verif_piece_protects_against_an_attack_the_king():
 	#On regarde d'où vient l'attaque
@@ -698,3 +699,37 @@ func verif_piece_protects_against_an_attack_the_king():
 					break
 				else:
 					break
+
+func _on_king_black_petit_roque():
+	#Bouge la pièce de move_one_square = 100 en y
+	move_local_x(-2*move_one_square)
+	#Met à jour la position de la pièce dans le tableau avant déplacement
+	position_piece_on_the_chessboard[i][j] = "0"
+	j -= 2
+	#Met à jour la position de la pièce dans le tableau après déplacement
+	position_piece_on_the_chessboard[i][j] = "rook_black"
+	starting_square = false
+	# Déselectionne la pièce après le déplacement
+	piece_select = "No piece selected"
+	
+	print(piece_select)
+	print("i: ", i)
+	print("j: ", j)
+	print(position_piece_on_the_chessboard)
+
+func _on_king_black_grand_roque():
+	#Bouge la pièce de move_one_square = 100 en y
+	move_local_x(3*move_one_square)
+	#Met à jour la position de la pièce dans le tableau avant déplacement
+	position_piece_on_the_chessboard[i][j] = "0"
+	j += 3
+	#Met à jour la position de la pièce dans le tableau après déplacement
+	position_piece_on_the_chessboard[i][j] = "rook_black"
+	starting_square = false
+	# Déselectionne la pièce après le déplacement
+	piece_select = "No piece selected"
+	
+	print(piece_select)
+	print("i: ", i)
+	print("j: ", j)
+	print(position_piece_on_the_chessboard)

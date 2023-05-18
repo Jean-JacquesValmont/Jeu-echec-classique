@@ -396,7 +396,7 @@ func _input(event):
 func _on_area_2d_area_entered(area):
 	if player_turn == "black":
 		get_node("/root/Plateau_echec/" + area.get_parent().get_name()).queue_free()
-		print(area.get_parent().get_name())
+		print("piece pris: ",area.get_parent().get_name())
 
 func attack_pieces_black():
 	attack_piece_black_on_the_chessboard = \

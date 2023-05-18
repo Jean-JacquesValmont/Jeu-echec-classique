@@ -1,6 +1,8 @@
 extends Sprite2D
 
 signal opponent_turned #Permet de créer son propre signal
+signal Petit_roque
+signal Grand_roque
 signal check_to_the_king
 signal checkmate_to_the_king
 
@@ -328,6 +330,62 @@ func _input(event):
 					#Et la position dans le tableau.
 					emit_signal("opponent_turned",position_piece_on_the_chessboard)
 				
+					#Roque vers la droite
+				elif mouse_pos.x >= 0 + 2*move_one_square and mouse_pos.x <= texture.get_width() + 2*move_one_square \
+				and mouse_pos.y >= 0  and mouse_pos.y <= texture.get_height() and starting_square == true\
+				and attack_piece_white_on_the_chessboard[i][j] == 0 and attack_piece_white_on_the_chessboard[i][j+1] == 0\
+				and attack_piece_white_on_the_chessboard[i][j+2] == 0\
+				and position_piece_on_the_chessboard[i][j+1] == "0" and position_piece_on_the_chessboard[i][j+2] == "0"\
+				and position_piece_on_the_chessboard[i][j+3] == "rook_black"\
+				and get_parent().get_node("Rook_black2").starting_square == true:
+					#Bouge la pièce de move_one_square = 100 en y
+					move_local_x(2*move_one_square)
+					#Met à jour la position de la pièce dans le tableau avant déplacement
+					position_piece_on_the_chessboard[i][j] = "0"
+					j += 2
+					#Met à jour la position de la pièce dans le tableau après déplacement
+					position_piece_on_the_chessboard[i][j] = "king_black"
+					starting_square = false
+					# Déselectionne la pièce après le déplacement
+					piece_select = "No piece selected"
+					
+					print(piece_select)
+					print("i: ", i)
+					print("j: ", j)
+					print(position_piece_on_the_chessboard)
+					#Envoie un signal à la scène plateau_echec pour mettre à jour le tour de toutes les pièces et
+					#Et la position dans le tableau.
+					emit_signal("opponent_turned",position_piece_on_the_chessboard)
+					emit_signal("Petit_roque")
+					
+				#Roque vers la gauche
+				elif mouse_pos.x >= 0 - 2*move_one_square and mouse_pos.x <= texture.get_width() - 2*move_one_square \
+				and mouse_pos.y >= 0  and mouse_pos.y <= texture.get_height() and starting_square == true \
+				and attack_piece_white_on_the_chessboard[i][j] == 0 and attack_piece_white_on_the_chessboard[i][j-1] == 0\
+				and attack_piece_white_on_the_chessboard[i][j-2] == 0 and attack_piece_white_on_the_chessboard[i][j-3] == 0\
+				and position_piece_on_the_chessboard[i][j-1] == "0" and position_piece_on_the_chessboard[i][j-2] == "0"\
+				and position_piece_on_the_chessboard[i][j-3] == "0" and position_piece_on_the_chessboard[i][j-4] == "rook_black"\
+				and get_parent().get_node("Rook_black").starting_square == true:
+					#Bouge la pièce de move_one_square = 100 en y
+					move_local_x(-2*move_one_square)
+					#Met à jour la position de la pièce dans le tableau avant déplacement
+					position_piece_on_the_chessboard[i][j] = "0"
+					j -= 2
+					#Met à jour la position de la pièce dans le tableau après déplacement
+					position_piece_on_the_chessboard[i][j] = "king_black"
+					starting_square = false
+					# Déselectionne la pièce après le déplacement
+					piece_select = "No piece selected"
+					
+					print(piece_select)
+					print("i: ", i)
+					print("j: ", j)
+					print(position_piece_on_the_chessboard)
+					#Envoie un signal à la scène plateau_echec pour mettre à jour le tour de toutes les pièces et
+					#Et la position dans le tableau.
+					emit_signal("opponent_turned",position_piece_on_the_chessboard)
+					emit_signal("Grand_roque")
+				
 				else:
 					piece_select = "No piece selected"
 					print(piece_select)
@@ -338,7 +396,7 @@ func _input(event):
 func _on_area_2d_area_entered(area):
 	if player_turn == "white":
 		get_node("/root/Plateau_echec/" + area.get_parent().get_name()).queue_free()
-		print(area.get_parent().get_name())
+		print("piece pris: ",area.get_parent().get_name())
 
 func attack_pieces_black():
 	attack_piece_black_on_the_chessboard = \
