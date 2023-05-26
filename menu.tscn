@@ -1,0 +1,90 @@
+[gd_scene load_steps=6 format=3 uid="uid://cdppj1rbvv0cg"]
+
+[ext_resource type="Script" path="res://menu.gd" id="1_uqrie"]
+[ext_resource type="Texture2D" uid="uid://wx54l08t0n8e" path="res://Image/Autre/Menu_image_chess_game.png" id="2_pt5k8"]
+[ext_resource type="Texture2D" uid="uid://jhpuhyjeth68" path="res://Image/Autre/Wood_button_play.png" id="3_7mogu"]
+[ext_resource type="Texture2D" uid="uid://d7ok21bexkwm" path="res://Image/Autre/banner_title_wood.png" id="3_rw1p3"]
+[ext_resource type="Texture2D" uid="uid://dtjevxejdnelj" path="res://Image/Autre/Wood_button_quit.png" id="4_jqjxx"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_uqrie")
+
+[node name="Background_menu" type="Sprite2D" parent="."]
+position = Vector2(-1.90735e-06, -46)
+scale = Vector2(1.39306, 1.39306)
+texture = ExtResource("2_pt5k8")
+centered = false
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(205, 188)
+scale = Vector2(1.2807, 1.2807)
+texture = ExtResource("3_rw1p3")
+centered = false
+
+[node name="Play" type="Button" parent="."]
+layout_mode = 2
+offset_left = 389.0
+offset_top = 443.0
+offset_right = 617.0
+offset_bottom = 581.0
+icon = ExtResource("3_7mogu")
+flat = true
+
+[node name="Quit" type="Button" parent="."]
+layout_mode = 2
+offset_left = 391.0
+offset_top = 646.0
+offset_right = 619.0
+offset_bottom = 779.0
+icon = ExtResource("4_jqjxx")
+flat = true
+icon_alignment = 1
+
+[node name="Timer_option" type="CheckButton" parent="."]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = 372.0
+offset_top = 580.0
+offset_right = 477.0
+offset_bottom = 616.0
+theme_override_font_sizes/font_size = 20
+text = "Timer"
+
+[node name="OptionButton" type="OptionButton" parent="Timer_option"]
+visible = false
+layout_mode = 0
+offset_left = 110.0
+offset_top = 3.0
+offset_right = 231.0
+offset_bottom = 34.0
+flat = true
+item_count = 3
+selected = 2
+popup/item_0/text = "3 min"
+popup/item_0/id = 0
+popup/item_1/text = "5 min"
+popup/item_1/id = 1
+popup/item_2/text = "10 min"
+popup/item_2/id = 2
+
+[node name="Preview_piece_move_option" type="CheckButton" parent="."]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = 371.0
+offset_top = 611.0
+offset_right = 651.0
+offset_bottom = 647.0
+theme_override_font_sizes/font_size = 20
+text = "See preview piece move"
+
+[connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="Timer_option" to="." method="_on_timer_option_pressed"]
+[connection signal="item_selected" from="Timer_option/OptionButton" to="." method="_on_option_button_item_selected"]
+[connection signal="pressed" from="Preview_piece_move_option" to="." method="_on_preview_piece_move_option_pressed"]

@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://b3oc0y8y20iqs"]
+[gd_scene load_steps=6 format=3 uid="uid://b3oc0y8y20iqs"]
 
 [ext_resource type="Texture2D" uid="uid://voyb7uhg7d8q" path="res://Image/Pièces/White/Bishop_white.png" id="1_1gvhf"]
 [ext_resource type="Script" path="res://Bishop_white.gd" id="2_wdh4u"]
+[ext_resource type="AudioStream" uid="uid://dxs5xfryaotn7" path="res://Son/Sound_piece_move.mp3" id="4_3ofh1"]
+[ext_resource type="Texture2D" uid="uid://c6jyuiu0b8cb1" path="res://Image/Autre/Square_attack.png" id="4_c28p3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gokcy"]
 size = Vector2(90, 90)
@@ -16,5 +18,238 @@ script = ExtResource("2_wdh4u")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(50, 50)
 shape = SubResource("RectangleShape2D_gokcy")
+
+[node name="Move_preview" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Bishop_white_preview_move_up_right" type="Sprite2D" parent="Move_preview"]
+visible = false
+modulate = Color(1, 1, 1, 0.498039)
+position = Vector2(100, -100)
+texture = ExtResource("1_1gvhf")
+centered = false
+
+[node name="Bishop_white_preview_move_up_right2" type="Sprite2D" parent="Move_preview"]
+visible = false
+modulate = Color(1, 1, 1, 0.498039)
+position = Vector2(200, -200)
+texture = ExtResource("1_1gvhf")
+centered = false
+
+[node name="Bishop_white_preview_move_up_right3" type="Sprite2D" parent="Move_preview"]
+visible = false
+modulate = Color(1, 1, 1, 0.498039)
+position = Vector2(300, -300)
+texture = ExtResource("1_1gvhf")
+centered = false
+
+[node name="Bishop_white_preview_move_up_right4" type="Sprite2D" parent="Move_preview"]
+visible = false
+modulate = Color(1, 1, 1, 0.498039)
+position = Vector2(400, -400)
+texture = ExtResource("1_1gvhf")
+centered = false
+
+[node name="Bishop_white_preview_move_up_right5" type="Sprite2D" parent="Move_preview"]
+visible = false
+modulate = Color(1, 1, 1, 0.498039)
+position = Vector2(500, -500)
+texture = ExtResource("1_1gvhf")
+centered = false
+
+[node name="Bishop_white_preview_move_up_right6" type="Sprite2D" parent="Move_preview"]
+visible = false
+modulate = Color(1, 1, 1, 0.498039)
+position = Vector2(600, -600)
+texture = ExtResource("1_1gvhf")
+centered = false
+
+[node name="Bishop_white_preview_move_up_right7" type="Sprite2D" parent="Move_preview"]
+visible = false
+modulate = Color(1, 1, 1, 0.498039)
+position = Vector2(700, -700)
+texture = ExtResource("1_1gvhf")
+centered = false
+
+[node name="Bishop_white_preview_move_up_left" type="Sprite2D" parent="Move_preview"]
+visible = false
+modulate = Color(1, 1, 1, 0.498039)
+position = Vector2(-100, -100)
+texture = ExtResource("1_1gvhf")
+centered = false
+
+[node name="Bishop_white_preview_move_up_left2" type="Sprite2D" parent="Move_preview"]
+visible = false
+modulate = Color(1, 1, 1, 0.498039)
+position = Vector2(-200, -200)
+texture = ExtResource("1_1gvhf")
+centered = false
+
+[node name="Bishop_white_preview_move_up_left3" type="Sprite2D" parent="Move_preview"]
+visible = false
+modulate = Color(1, 1, 1, 0.498039)
+position = Vector2(-300, -300)
+texture = ExtResource("1_1gvhf")
+centered = false
+
+[node name="Bishop_white_preview_move_up_left4" type="Sprite2D" parent="Move_preview"]
+visible = false
+modulate = Color(1, 1, 1, 0.498039)
+position = Vector2(-400, -400)
+texture = ExtResource("1_1gvhf")
+centered = false
+
+[node name="Bishop_white_preview_move_up_left5" type="Sprite2D" parent="Move_preview"]
+visible = false
+modulate = Color(1, 1, 1, 0.498039)
+position = Vector2(-500, -500)
+texture = ExtResource("1_1gvhf")
+centered = false
+
+[node name="Bishop_white_preview_move_up_left6" type="Sprite2D" parent="Move_preview"]
+visible = false
+modulate = Color(1, 1, 1, 0.498039)
+position = Vector2(-600, -600)
+texture = ExtResource("1_1gvhf")
+centered = false
+
+[node name="Bishop_white_preview_move_up_left7" type="Sprite2D" parent="Move_preview"]
+visible = false
+modulate = Color(1, 1, 1, 0.498039)
+position = Vector2(-700, -700)
+texture = ExtResource("1_1gvhf")
+centered = false
+
+[node name="Bishop_white_preview_move_down_right" type="Sprite2D" parent="Move_preview"]
+visible = false
+modulate = Color(1, 1, 1, 0.498039)
+position = Vector2(100, 100)
+texture = ExtResource("1_1gvhf")
+centered = false
+
+[node name="Bishop_white_preview_move_down_right2" type="Sprite2D" parent="Move_preview"]
+visible = false
+modulate = Color(1, 1, 1, 0.498039)
+position = Vector2(200, 200)
+texture = ExtResource("1_1gvhf")
+centered = false
+
+[node name="Bishop_white_preview_move_down_right3" type="Sprite2D" parent="Move_preview"]
+visible = false
+modulate = Color(1, 1, 1, 0.498039)
+position = Vector2(300, 300)
+texture = ExtResource("1_1gvhf")
+centered = false
+
+[node name="Bishop_white_preview_move_down_right4" type="Sprite2D" parent="Move_preview"]
+visible = false
+modulate = Color(1, 1, 1, 0.498039)
+position = Vector2(400, 400)
+texture = ExtResource("1_1gvhf")
+centered = false
+
+[node name="Bishop_white_preview_move_down_right5" type="Sprite2D" parent="Move_preview"]
+visible = false
+modulate = Color(1, 1, 1, 0.498039)
+position = Vector2(500, 500)
+texture = ExtResource("1_1gvhf")
+centered = false
+
+[node name="Bishop_white_preview_move_down_right6" type="Sprite2D" parent="Move_preview"]
+visible = false
+modulate = Color(1, 1, 1, 0.498039)
+position = Vector2(600, 600)
+texture = ExtResource("1_1gvhf")
+centered = false
+
+[node name="Bishop_white_preview_move_down_right7" type="Sprite2D" parent="Move_preview"]
+visible = false
+modulate = Color(1, 1, 1, 0.498039)
+position = Vector2(700, 700)
+texture = ExtResource("1_1gvhf")
+centered = false
+
+[node name="Bishop_white_preview_move_down_left" type="Sprite2D" parent="Move_preview"]
+visible = false
+modulate = Color(1, 1, 1, 0.498039)
+position = Vector2(-100, 100)
+texture = ExtResource("1_1gvhf")
+centered = false
+
+[node name="Bishop_white_preview_move_down_left2" type="Sprite2D" parent="Move_preview"]
+visible = false
+modulate = Color(1, 1, 1, 0.498039)
+position = Vector2(-200, 200)
+texture = ExtResource("1_1gvhf")
+centered = false
+
+[node name="Bishop_white_preview_move_down_left3" type="Sprite2D" parent="Move_preview"]
+visible = false
+modulate = Color(1, 1, 1, 0.498039)
+position = Vector2(-300, 300)
+texture = ExtResource("1_1gvhf")
+centered = false
+
+[node name="Bishop_white_preview_move_down_left4" type="Sprite2D" parent="Move_preview"]
+visible = false
+modulate = Color(1, 1, 1, 0.498039)
+position = Vector2(-400, 400)
+texture = ExtResource("1_1gvhf")
+centered = false
+
+[node name="Bishop_white_preview_move_down_left5" type="Sprite2D" parent="Move_preview"]
+visible = false
+modulate = Color(1, 1, 1, 0.498039)
+position = Vector2(-500, 500)
+texture = ExtResource("1_1gvhf")
+centered = false
+
+[node name="Bishop_white_preview_move_down_left6" type="Sprite2D" parent="Move_preview"]
+visible = false
+modulate = Color(1, 1, 1, 0.498039)
+position = Vector2(-600, 600)
+texture = ExtResource("1_1gvhf")
+centered = false
+
+[node name="Bishop_white_preview_move_down_left7" type="Sprite2D" parent="Move_preview"]
+visible = false
+modulate = Color(1, 1, 1, 0.498039)
+position = Vector2(-700, 700)
+texture = ExtResource("1_1gvhf")
+centered = false
+
+[node name="Square_attack_preview_up_right" type="Sprite2D" parent="Move_preview"]
+visible = false
+z_index = 1
+position = Vector2(100, -100)
+texture = ExtResource("4_c28p3")
+centered = false
+
+[node name="Square_attack_preview_up_left" type="Sprite2D" parent="Move_preview"]
+visible = false
+z_index = 1
+position = Vector2(100, 100)
+texture = ExtResource("4_c28p3")
+centered = false
+
+[node name="Square_attack_preview_down_right" type="Sprite2D" parent="Move_preview"]
+visible = false
+z_index = 1
+position = Vector2(-100, -100)
+texture = ExtResource("4_c28p3")
+centered = false
+
+[node name="Square_attack_preview_down_left" type="Sprite2D" parent="Move_preview"]
+visible = false
+z_index = 1
+position = Vector2(-100, 100)
+texture = ExtResource("4_c28p3")
+centered = false
+
+[node name="Sound_piece_move" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_3ofh1")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

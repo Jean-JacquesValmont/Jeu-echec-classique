@@ -20,6 +20,7 @@ var player_turn = "white"
 var piece_select = "No piece selected"
 var my_node_id = get_node(".").get_instance_id() #Permet de récupérer l'ID unique du noeud
 @onready var my_node_name = get_node(".").get_name() #Permet de récupérer le nom du noeud
+@onready var Sound_piece_move = get_node("Sound_piece_move")
 var i = 9 # Le i correspond à l'axe y (de gauche à droite)
 var j = 3 # Le j correspond à l'axe x (de haut en bas)
 var move_one_square = 100
@@ -98,6 +99,7 @@ func _input(event):
 						position_piece_on_the_chessboard[i][j] = "knight_white"
 						# Déselectionne la pièce après le déplacement
 						piece_select = "No piece selected"
+						get_node("Sound_piece_move").play()
 						
 						print(piece_select)
 						print("i: ", i)
@@ -124,6 +126,7 @@ func _input(event):
 						position_piece_on_the_chessboard[i][j] = "knight_white"
 						# Déselectionne la pièce après le déplacement
 						piece_select = "No piece selected"
+						get_node("Sound_piece_move").play()
 						
 						print(piece_select)
 						print("i: ", i)
@@ -150,6 +153,7 @@ func _input(event):
 						position_piece_on_the_chessboard[i][j] = "knight_white"
 						# Déselectionne la pièce après le déplacement
 						piece_select = "No piece selected"
+						get_node("Sound_piece_move").play()
 						
 						print(piece_select)
 						print("i: ", i)
@@ -176,6 +180,7 @@ func _input(event):
 						position_piece_on_the_chessboard[i][j] = "knight_white"
 						# Déselectionne la pièce après le déplacement
 						piece_select = "No piece selected"
+						get_node("Sound_piece_move").play()
 						
 						print(piece_select)
 						print("i: ", i)
@@ -202,6 +207,7 @@ func _input(event):
 						position_piece_on_the_chessboard[i][j] = "knight_white"
 						# Déselectionne la pièce après le déplacement
 						piece_select = "No piece selected"
+						get_node("Sound_piece_move").play()
 						
 						print(piece_select)
 						print("i: ", i)
@@ -228,6 +234,7 @@ func _input(event):
 						position_piece_on_the_chessboard[i][j] = "knight_white"
 						# Déselectionne la pièce après le déplacement
 						piece_select = "No piece selected"
+						get_node("Sound_piece_move").play()
 						
 						print(piece_select)
 						print("i: ", i)
@@ -254,6 +261,7 @@ func _input(event):
 						position_piece_on_the_chessboard[i][j] = "knight_white"
 						# Déselectionne la pièce après le déplacement
 						piece_select = "No piece selected"
+						get_node("Sound_piece_move").play()
 						
 						print(piece_select)
 						print("i: ", i)
@@ -281,6 +289,7 @@ func _input(event):
 						position_piece_on_the_chessboard[i][j] = "knight_white"
 						# Déselectionne la pièce après le déplacement
 						piece_select = "No piece selected"
+						get_node("Sound_piece_move").play()
 						
 						print(piece_select)
 						print("i: ", i)
@@ -351,6 +360,7 @@ func _input(event):
 						attacker_position_shift2_j = 0
 						# Déselectionne la pièce après le déplacement
 						piece_select = "No piece selected"
+						get_node("Sound_piece_move").play()
 						
 						print(piece_select)
 						print("i: ", i)
@@ -382,6 +392,7 @@ func _input(event):
 						attacker_position_shift2_j = 0
 						# Déselectionne la pièce après le déplacement
 						piece_select = "No piece selected"
+						get_node("Sound_piece_move").play()
 						
 						print(piece_select)
 						print("i: ", i)
@@ -413,6 +424,7 @@ func _input(event):
 						attacker_position_shift2_j = 0
 						# Déselectionne la pièce après le déplacement
 						piece_select = "No piece selected"
+						get_node("Sound_piece_move").play()
 						
 						print(piece_select)
 						print("i: ", i)
@@ -444,6 +456,7 @@ func _input(event):
 						attacker_position_shift2_j = 0
 						# Déselectionne la pièce après le déplacement
 						piece_select = "No piece selected"
+						get_node("Sound_piece_move").play()
 						
 						print(piece_select)
 						print("i: ", i)
@@ -475,6 +488,7 @@ func _input(event):
 						attacker_position_shift2_j = 0
 						# Déselectionne la pièce après le déplacement
 						piece_select = "No piece selected"
+						get_node("Sound_piece_move").play()
 						
 						print(piece_select)
 						print("i: ", i)
@@ -506,6 +520,7 @@ func _input(event):
 						attacker_position_shift2_j = 0
 						# Déselectionne la pièce après le déplacement
 						piece_select = "No piece selected"
+						get_node("Sound_piece_move").play()
 						
 						print(piece_select)
 						print("i: ", i)
@@ -537,6 +552,7 @@ func _input(event):
 						attacker_position_shift2_j = 0
 						# Déselectionne la pièce après le déplacement
 						piece_select = "No piece selected"
+						get_node("Sound_piece_move").play()
 						
 						print(piece_select)
 						print("i: ", i)
@@ -569,6 +585,7 @@ func _input(event):
 						attacker_position_shift2_j = 0
 						# Déselectionne la pièce après le déplacement
 						piece_select = "No piece selected"
+						get_node("Sound_piece_move").play()
 						
 						print(piece_select)
 						print("i: ", i)
@@ -607,6 +624,7 @@ func _input(event):
 						attacker_position_shift2_j = 0
 						# Déselectionne la pièce après le déplacement
 						piece_select = "No piece selected"
+						get_node("Sound_piece_move").play()
 						
 						print(piece_select)
 						print("i: ", i)
@@ -638,6 +656,7 @@ func _input(event):
 						attacker_position_shift2_j = 0
 						# Déselectionne la pièce après le déplacement
 						piece_select = "No piece selected"
+						get_node("Sound_piece_move").play()
 						
 						print(piece_select)
 						print("i: ", i)
@@ -669,6 +688,7 @@ func _input(event):
 						attacker_position_shift2_j = 0
 						# Déselectionne la pièce après le déplacement
 						piece_select = "No piece selected"
+						get_node("Sound_piece_move").play()
 						
 						print(piece_select)
 						print("i: ", i)
@@ -700,6 +720,7 @@ func _input(event):
 						attacker_position_shift2_j = 0
 						# Déselectionne la pièce après le déplacement
 						piece_select = "No piece selected"
+						get_node("Sound_piece_move").play()
 						
 						print(piece_select)
 						print("i: ", i)
@@ -731,6 +752,7 @@ func _input(event):
 						attacker_position_shift2_j = 0
 						# Déselectionne la pièce après le déplacement
 						piece_select = "No piece selected"
+						get_node("Sound_piece_move").play()
 						
 						print(piece_select)
 						print("i: ", i)
@@ -762,6 +784,7 @@ func _input(event):
 						attacker_position_shift2_j = 0
 						# Déselectionne la pièce après le déplacement
 						piece_select = "No piece selected"
+						get_node("Sound_piece_move").play()
 						
 						print(piece_select)
 						print("i: ", i)
@@ -793,6 +816,7 @@ func _input(event):
 						attacker_position_shift2_j = 0
 						# Déselectionne la pièce après le déplacement
 						piece_select = "No piece selected"
+						get_node("Sound_piece_move").play()
 						
 						print(piece_select)
 						print("i: ", i)
@@ -825,6 +849,7 @@ func _input(event):
 						attacker_position_shift2_j = 0
 						# Déselectionne la pièce après le déplacement
 						piece_select = "No piece selected"
+						get_node("Sound_piece_move").play()
 						
 						print(piece_select)
 						print("i: ", i)
@@ -840,13 +865,251 @@ func _input(event):
 				elif piece_protects_against_an_attack == true:
 					piece_select = "No piece selected"
 					print(piece_select)
+					
+	if Global.preview_piece_move_option == true:
+		if my_node_name != null:
+			preview_move()
 
 func _on_area_2d_area_entered(area):
 	if player_turn == "black":
-		get_node("/root/Plateau_echec/" + area.get_parent().get_name()).queue_free()
+		get_node("/root/Chess_game/Plateau_echec/" + area.get_parent().get_name()).queue_free()
 		print("piece pris: ",area.get_parent().get_name())
 	else:
 		pass
+
+func preview_move():
+	#Pré-visualisation des mouvements de la pièce
+	var Move_Preview = get_node("Move_preview")
+	if piece_select == my_node_name and king_in_check == false and piece_protects_against_an_attack == false:
+		#Déplacement en haut à droite
+		if position_piece_on_the_chessboard[i-2][j+1] == "0":
+			Move_Preview.get_node("Knight_white_preview_move").visible = true
+		elif (position_piece_on_the_chessboard[i-2][j+1] == "pawn_black"\
+		or position_piece_on_the_chessboard[i-2][j+1] == "knight_black" or position_piece_on_the_chessboard[i-2][j+1] == "bishop_black"\
+		or position_piece_on_the_chessboard[i-2][j+1] == "rook_black" or position_piece_on_the_chessboard[i-2][j+1] == "queen_black"):
+			Move_Preview.get_node("Square_attack_preview").visible = true
+			
+		#Déplacement en haut à gauche
+		if position_piece_on_the_chessboard[i-2][j-1] == "0":
+			Move_Preview.get_node("Knight_white_preview_move2").visible = true
+		elif (position_piece_on_the_chessboard[i-2][j-1] == "pawn_black"\
+		or position_piece_on_the_chessboard[i-2][j-1] == "knight_black" or position_piece_on_the_chessboard[i-2][j-1] == "bishop_black"\
+		or position_piece_on_the_chessboard[i-2][j-1] == "rook_black" or position_piece_on_the_chessboard[i-2][j-1] == "queen_black"):
+			Move_Preview.get_node("Square_attack_preview2").visible = true
+			
+		#Déplacement vers la droite en haut
+		if position_piece_on_the_chessboard[i-1][j+2] == "0":
+			Move_Preview.get_node("Knight_white_preview_move3").visible = true
+		elif (position_piece_on_the_chessboard[i+1][j+2] == "pawn_black"\
+		or position_piece_on_the_chessboard[i-1][j+2] == "knight_black" or position_piece_on_the_chessboard[i-1][j+2] == "bishop_black"\
+		or position_piece_on_the_chessboard[i-1][j+2] == "rook_black" or position_piece_on_the_chessboard[i-1][j+2] == "queen_black"):
+			Move_Preview.get_node("Square_attack_preview3").visible = true
+			
+		#Déplacement vers la droite en bas
+		if position_piece_on_the_chessboard[i+1][j+2] == "0":
+			Move_Preview.get_node("Knight_white_preview_move4").visible = true
+		elif (position_piece_on_the_chessboard[i+1][j+2] == "pawn_black"\
+		or position_piece_on_the_chessboard[i+1][j+2] == "knight_black" or position_piece_on_the_chessboard[i+1][j+2] == "bishop_black"\
+		or position_piece_on_the_chessboard[i+1][j+2] == "rook_black" or position_piece_on_the_chessboard[i+1][j+2] == "queen_black"):
+			Move_Preview.get_node("Square_attack_preview4").visible = true
+			
+		#Déplacement en bas à droite
+		if position_piece_on_the_chessboard[i+2][j+1] == "0":
+			Move_Preview.get_node("Knight_white_preview_move5").visible = true
+		elif (position_piece_on_the_chessboard[i+2][j+1] == "pawn_black"\
+		or position_piece_on_the_chessboard[i+2][j+1] == "knight_black" or position_piece_on_the_chessboard[i+2][j+1] == "bishop_black"\
+		or position_piece_on_the_chessboard[i+2][j+1] == "rook_black" or position_piece_on_the_chessboard[i+2][j+1] == "queen_black"):
+			Move_Preview.get_node("Square_attack_preview5").visible = true
+			
+		#Déplacement en bas à gauche
+		if position_piece_on_the_chessboard[i+2][j-1] == "0":
+			Move_Preview.get_node("Knight_white_preview_move6").visible = true
+		elif (position_piece_on_the_chessboard[i+2][j-1] == "pawn_black"\
+		or position_piece_on_the_chessboard[i+2][j-1] == "knight_black" or position_piece_on_the_chessboard[i+2][j-1] == "bishop_black"\
+		or position_piece_on_the_chessboard[i+2][j-1] == "rook_black" or position_piece_on_the_chessboard[i+2][j-1] == "queen_black"):
+			Move_Preview.get_node("Square_attack_preview6").visible = true
+			
+		#Déplacement vers la gauche en haut
+		if position_piece_on_the_chessboard[i-1][j-2] == "0":
+			Move_Preview.get_node("Knight_white_preview_move7").visible = true
+		elif (position_piece_on_the_chessboard[i-1][j-2] == "pawn_black"\
+		or position_piece_on_the_chessboard[i-1][j-2] == "knight_black" or position_piece_on_the_chessboard[i-1][j-2] == "bishop_black"\
+		or position_piece_on_the_chessboard[i-1][j-2] == "rook_black" or position_piece_on_the_chessboard[i-1][j-2] == "queen_black"):
+			Move_Preview.get_node("Square_attack_preview7").visible = true
+			
+		#Déplacement vers la gauche en bas
+		if position_piece_on_the_chessboard[i+1][j-2] == "0":
+			Move_Preview.get_node("Knight_white_preview_move8").visible = true
+		elif (position_piece_on_the_chessboard[i+1][j-2] == "pawn_black"\
+		or position_piece_on_the_chessboard[i+1][j-2] == "knight_black" or position_piece_on_the_chessboard[i+1][j-2] == "bishop_black"\
+		or position_piece_on_the_chessboard[i+1][j-2] == "rook_black" or position_piece_on_the_chessboard[i+1][j-2] == "queen_black"):
+			Move_Preview.get_node("Square_attack_preview8").visible = true
+			
+	elif piece_select == my_node_name and king_in_check == true and piece_protects_against_an_attack == false:
+		if position_piece_on_the_chessboard[attacker_position_shift_i][attacker_position_shift_j] == "0"\
+		and Move_Preview.get_node("Knight_white_preview_move").position.y == (attacker_position_shift_i - i) * 100\
+		and Move_Preview.get_node("Knight_white_preview_move").position.x == (attacker_position_shift_j - j) * 100:
+			Move_Preview.get_node("Knight_white_preview_move").visible = true
+		elif position_piece_on_the_chessboard[attacker_position_shift_i][attacker_position_shift_j] != "0"\
+		and Move_Preview.get_node("Square_attack_preview").position.y == (attacker_position_shift_i - i) * 100\
+		and Move_Preview.get_node("Square_attack_preview").position.x == (attacker_position_shift_j - j) * 100:
+			Move_Preview.get_node("Square_attack_preview").visible = true
+			
+		if position_piece_on_the_chessboard[attacker_position_shift_i][attacker_position_shift_j] == "0"\
+		and Move_Preview.get_node("Knight_white_preview_move2").position.y == (attacker_position_shift_i - i) * 100\
+		and Move_Preview.get_node("Knight_white_preview_move2").position.x == (attacker_position_shift_j - j) * 100:
+			Move_Preview.get_node("Knight_white_preview_move2").visible = true
+		elif position_piece_on_the_chessboard[attacker_position_shift_i][attacker_position_shift_j] != "0"\
+		and Move_Preview.get_node("Square_attack_preview2").position.y == (attacker_position_shift_i - i) * 100\
+		and Move_Preview.get_node("Square_attack_preview2").position.x == (attacker_position_shift_j - j) * 100:
+			Move_Preview.get_node("Square_attack_preview2").visible = true
+		
+		if position_piece_on_the_chessboard[attacker_position_shift_i][attacker_position_shift_j] == "0"\
+		and Move_Preview.get_node("Knight_white_preview_move3").position.y == (attacker_position_shift_i - i) * 100\
+		and Move_Preview.get_node("Knight_white_preview_move3").position.x == (attacker_position_shift_j - j) * 100:
+			Move_Preview.get_node("Knight_white_preview_move3").visible = true
+		elif position_piece_on_the_chessboard[attacker_position_shift_i][attacker_position_shift_j] != "0"\
+		and Move_Preview.get_node("Square_attack_preview3").position.y == (attacker_position_shift_i - i) * 100\
+		and Move_Preview.get_node("Square_attack_preview3").position.x == (attacker_position_shift_j - j) * 100:
+			Move_Preview.get_node("Square_attack_preview3").visible = true
+		
+		if position_piece_on_the_chessboard[attacker_position_shift_i][attacker_position_shift_j] == "0"\
+		and Move_Preview.get_node("Knight_white_preview_move4").position.y == (attacker_position_shift_i - i) * 100\
+		and Move_Preview.get_node("Knight_white_preview_move4").position.x == (attacker_position_shift_j - j) * 100:
+			Move_Preview.get_node("Knight_white_preview_move4").visible = true
+		elif position_piece_on_the_chessboard[attacker_position_shift_i][attacker_position_shift_j] != "0"\
+		and Move_Preview.get_node("Square_attack_preview4").position.y == (attacker_position_shift_i - i) * 100\
+		and Move_Preview.get_node("Square_attack_preview4").position.x == (attacker_position_shift_j - j) * 100:
+			Move_Preview.get_node("Square_attack_preview4").visible = true
+			
+		if position_piece_on_the_chessboard[attacker_position_shift_i][attacker_position_shift_j] == "0"\
+		and Move_Preview.get_node("Knight_white_preview_move5").position.y == (attacker_position_shift_i - i) * 100\
+		and Move_Preview.get_node("Knight_white_preview_move5").position.x == (attacker_position_shift_j - j) * 100:
+			Move_Preview.get_node("Knight_white_preview_move5").visible = true
+		elif position_piece_on_the_chessboard[attacker_position_shift_i][attacker_position_shift_j] != "0"\
+		and Move_Preview.get_node("Square_attack_preview5").position.y == (attacker_position_shift_i - i) * 100\
+		and Move_Preview.get_node("Square_attack_preview5").position.x == (attacker_position_shift_j - j) * 100:
+			Move_Preview.get_node("Square_attack_preview5").visible = true
+			
+		if position_piece_on_the_chessboard[attacker_position_shift_i][attacker_position_shift_j] == "0"\
+		and Move_Preview.get_node("Knight_white_preview_move6").position.y == (attacker_position_shift_i - i) * 100\
+		and Move_Preview.get_node("Knight_white_preview_move6").position.x == (attacker_position_shift_j - j) * 100:
+			Move_Preview.get_node("Knight_white_preview_move6").visible = true
+		elif position_piece_on_the_chessboard[attacker_position_shift_i][attacker_position_shift_j] != "0"\
+		and Move_Preview.get_node("Square_attack_preview6").position.y == (attacker_position_shift_i - i) * 100\
+		and Move_Preview.get_node("Square_attack_preview6").position.x == (attacker_position_shift_j - j) * 100:
+			Move_Preview.get_node("Square_attack_preview6").visible = true
+			
+		if position_piece_on_the_chessboard[attacker_position_shift_i][attacker_position_shift_j] == "0"\
+		and Move_Preview.get_node("Knight_white_preview_move7").position.y == (attacker_position_shift_i - i) * 100\
+		and Move_Preview.get_node("Knight_white_preview_move7").position.x == (attacker_position_shift_j - j) * 100:
+			Move_Preview.get_node("Knight_white_preview_move7").visible = true
+		elif position_piece_on_the_chessboard[attacker_position_shift_i][attacker_position_shift_j] != "0"\
+		and Move_Preview.get_node("Square_attack_preview7").position.y == (attacker_position_shift_i - i) * 100\
+		and Move_Preview.get_node("Square_attack_preview7").position.x == (attacker_position_shift_j - j) * 100:
+			Move_Preview.get_node("Square_attack_preview7").visible = true
+		
+		if position_piece_on_the_chessboard[attacker_position_shift_i][attacker_position_shift_j] == "0"\
+		and Move_Preview.get_node("Knight_white_preview_move8").position.y == (attacker_position_shift_i - i) * 100\
+		and Move_Preview.get_node("Knight_white_preview_move8").position.x == (attacker_position_shift_j - j) * 100:
+			Move_Preview.get_node("Knight_white_preview_move8").visible = true
+		elif position_piece_on_the_chessboard[attacker_position_shift_i][attacker_position_shift_j] != "0"\
+		and Move_Preview.get_node("Square_attack_preview8").position.y == (attacker_position_shift_i - i) * 100\
+		and Move_Preview.get_node("Square_attack_preview8").position.x == (attacker_position_shift_j - j) * 100:
+			Move_Preview.get_node("Square_attack_preview8").visible = true
+			
+		############################################################################################################
+		############################################################################################################
+		
+		if position_piece_on_the_chessboard[attacker_position_shift2_i][attacker_position_shift2_j] == "0"\
+		and Move_Preview.get_node("Knight_white_preview_move").position.y == (attacker_position_shift2_i - i) * 100\
+		and Move_Preview.get_node("Knight_white_preview_move").position.x == (attacker_position_shift2_j - j) * 100:
+			Move_Preview.get_node("Knight_white_preview_move").visible = true
+		elif position_piece_on_the_chessboard[attacker_position_shift2_i][attacker_position_shift2_j] != "0"\
+		and Move_Preview.get_node("Square_attack_preview").position.y == (attacker_position_shift2_i - i) * 100\
+		and Move_Preview.get_node("Square_attack_preview").position.x == (attacker_position_shift2_j - j) * 100:
+			Move_Preview.get_node("Square_attack_preview").visible = true
+			
+		if position_piece_on_the_chessboard[attacker_position_shift2_i][attacker_position_shift2_j] == "0"\
+		and Move_Preview.get_node("Knight_white_preview_move2").position.y == (attacker_position_shift2_i - i) * 100\
+		and Move_Preview.get_node("Knight_white_preview_move2").position.x == (attacker_position_shift2_j - j) * 100:
+			Move_Preview.get_node("Knight_white_preview_move2").visible = true
+		elif position_piece_on_the_chessboard[attacker_position_shift2_i][attacker_position_shift2_j] != "0"\
+		and Move_Preview.get_node("Square_attack_preview2").position.y == (attacker_position_shift2_i - i) * 100\
+		and Move_Preview.get_node("Square_attack_preview2").position.x == (attacker_position_shift2_j - j) * 100:
+			Move_Preview.get_node("Square_attack_preview2").visible = true
+		
+		if position_piece_on_the_chessboard[attacker_position_shift2_i][attacker_position_shift2_j] == "0"\
+		and Move_Preview.get_node("Knight_white_preview_move3").position.y == (attacker_position_shift2_i - i) * 100\
+		and Move_Preview.get_node("Knight_white_preview_move3").position.x == (attacker_position_shift2_j - j) * 100:
+			Move_Preview.get_node("Knight_white_preview_move3").visible = true
+		elif position_piece_on_the_chessboard[attacker_position_shift2_i][attacker_position_shift2_j] != "0"\
+		and Move_Preview.get_node("Square_attack_preview3").position.y == (attacker_position_shift2_i - i) * 100\
+		and Move_Preview.get_node("Square_attack_preview3").position.x == (attacker_position_shift2_j - j) * 100:
+			Move_Preview.get_node("Square_attack_preview3").visible = true
+		
+		if position_piece_on_the_chessboard[attacker_position_shift2_i][attacker_position_shift2_j] == "0"\
+		and Move_Preview.get_node("Knight_white_preview_move4").position.y == (attacker_position_shift2_i - i) * 100\
+		and Move_Preview.get_node("Knight_white_preview_move4").position.x == (attacker_position_shift2_j - j) * 100:
+			Move_Preview.get_node("Knight_white_preview_move4").visible = true
+		elif position_piece_on_the_chessboard[attacker_position_shift2_i][attacker_position_shift2_j] != "0"\
+		and Move_Preview.get_node("Square_attack_preview4").position.y == (attacker_position_shift2_i - i) * 100\
+		and Move_Preview.get_node("Square_attack_preview4").position.x == (attacker_position_shift2_j - j) * 100:
+			Move_Preview.get_node("Square_attack_preview4").visible = true
+			
+		if position_piece_on_the_chessboard[attacker_position_shift2_i][attacker_position_shift2_j] == "0"\
+		and Move_Preview.get_node("Knight_white_preview_move5").position.y == (attacker_position_shift2_i - i) * 100\
+		and Move_Preview.get_node("Knight_white_preview_move5").position.x == (attacker_position_shift2_j - j) * 100:
+			Move_Preview.get_node("Knight_white_preview_move5").visible = true
+		elif position_piece_on_the_chessboard[attacker_position_shift2_i][attacker_position_shift2_j] != "0"\
+		and Move_Preview.get_node("Square_attack_preview5").position.y == (attacker_position_shift2_i - i) * 100\
+		and Move_Preview.get_node("Square_attack_preview5").position.x == (attacker_position_shift2_j - j) * 100:
+			Move_Preview.get_node("Square_attack_preview5").visible = true
+			
+		if position_piece_on_the_chessboard[attacker_position_shift2_i][attacker_position_shift2_j] == "0"\
+		and Move_Preview.get_node("Knight_white_preview_move6").position.y == (attacker_position_shift2_i - i) * 100\
+		and Move_Preview.get_node("Knight_white_preview_move6").position.x == (attacker_position_shift2_j - j) * 100:
+			Move_Preview.get_node("Knight_white_preview_move6").visible = true
+		elif position_piece_on_the_chessboard[attacker_position_shift2_i][attacker_position_shift2_j] != "0"\
+		and Move_Preview.get_node("Square_attack_preview6").position.y == (attacker_position_shift2_i - i) * 100\
+		and Move_Preview.get_node("Square_attack_preview6").position.x == (attacker_position_shift2_j - j) * 100:
+			Move_Preview.get_node("Square_attack_preview6").visible = true
+			
+		if position_piece_on_the_chessboard[attacker_position_shift2_i][attacker_position_shift2_j] == "0"\
+		and Move_Preview.get_node("Knight_white_preview_move7").position.y == (attacker_position_shift2_i - i) * 100\
+		and Move_Preview.get_node("Knight_white_preview_move7").position.x == (attacker_position_shift2_j - j) * 100:
+			Move_Preview.get_node("Knight_white_preview_move7").visible = true
+		elif position_piece_on_the_chessboard[attacker_position_shift2_i][attacker_position_shift2_j] != "0"\
+		and Move_Preview.get_node("Square_attack_preview7").position.y == (attacker_position_shift2_i - i) * 100\
+		and Move_Preview.get_node("Square_attack_preview7").position.x == (attacker_position_shift2_j - j) * 100:
+			Move_Preview.get_node("Square_attack_preview7").visible = true
+		
+		if position_piece_on_the_chessboard[attacker_position_shift2_i][attacker_position_shift2_j] == "0"\
+		and Move_Preview.get_node("Knight_white_preview_move8").position.y == (attacker_position_shift2_i - i) * 100\
+		and Move_Preview.get_node("Knight_white_preview_move8").position.x == (attacker_position_shift2_j - j) * 100:
+			Move_Preview.get_node("Knight_white_preview_move8").visible = true
+		elif position_piece_on_the_chessboard[attacker_position_shift2_i][attacker_position_shift2_j] != "0"\
+		and Move_Preview.get_node("Square_attack_preview8").position.y == (attacker_position_shift2_i - i) * 100\
+		and Move_Preview.get_node("Square_attack_preview8").position.x == (attacker_position_shift2_j - j) * 100:
+			Move_Preview.get_node("Square_attack_preview8").visible = true
+		
+	else:
+		Move_Preview.get_node("Knight_white_preview_move").visible = false
+		Move_Preview.get_node("Square_attack_preview").visible = false
+		Move_Preview.get_node("Knight_white_preview_move2").visible = false
+		Move_Preview.get_node("Square_attack_preview2").visible = false
+		Move_Preview.get_node("Knight_white_preview_move3").visible = false
+		Move_Preview.get_node("Square_attack_preview3").visible = false
+		Move_Preview.get_node("Knight_white_preview_move4").visible = false
+		Move_Preview.get_node("Square_attack_preview4").visible = false
+		Move_Preview.get_node("Knight_white_preview_move5").visible = false
+		Move_Preview.get_node("Square_attack_preview5").visible = false
+		Move_Preview.get_node("Knight_white_preview_move6").visible = false
+		Move_Preview.get_node("Square_attack_preview6").visible = false
+		Move_Preview.get_node("Knight_white_preview_move7").visible = false
+		Move_Preview.get_node("Square_attack_preview7").visible = false
+		Move_Preview.get_node("Knight_white_preview_move8").visible = false
+		Move_Preview.get_node("Square_attack_preview8").visible = false
 
 func verif_piece_protects_against_an_attack_the_king():
 	#On regarde d'où vient l'attaque
@@ -1047,3 +1310,4 @@ func verif_piece_protects_against_an_attack_the_king():
 					break
 				else:
 					break
+					

@@ -1,6 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://dvy4wdx8kqx6n"]
+[gd_scene load_steps=22 format=3 uid="uid://dvy4wdx8kqx6n"]
 
+[ext_resource type="Texture2D" uid="uid://wx54l08t0n8e" path="res://Image/Autre/Menu_image_chess_game.png" id="1_c0lef"]
 [ext_resource type="Texture2D" uid="uid://dwdxf75sahxay" path="res://Image/Plateau/Plateau d'échec Version Bois.png" id="1_ngoat"]
+[ext_resource type="Texture2D" uid="uid://dh25mxm24xc07" path="res://Image/Autre/Wood_button_menu.png" id="2_ikgit"]
 [ext_resource type="Script" path="res://Plateau_echec.gd" id="2_tfyql"]
 [ext_resource type="PackedScene" uid="uid://das4nxkuiwyf8" path="res://pawn_white.tscn" id="2_txj3q"]
 [ext_resource type="PackedScene" uid="uid://s518ncxtttsy" path="res://pawn_black.tscn" id="3_apq86"]
@@ -14,160 +16,280 @@
 [ext_resource type="PackedScene" uid="uid://c5s4ca5vb55gq" path="res://knight_black.tscn" id="8_6jpi4"]
 [ext_resource type="PackedScene" uid="uid://ctu8raach5dy1" path="res://queen_black.tscn" id="12_omt7s"]
 [ext_resource type="PackedScene" uid="uid://c2lwvhbplnyu4" path="res://king_black.tscn" id="14_fse2i"]
+[ext_resource type="Texture2D" uid="uid://cjlvplqnt76p4" path="res://Image/Autre/Square_last_move.png" id="15_j3uqk"]
+[ext_resource type="Script" path="res://Display_text_turn.gd" id="15_kqaeh"]
+[ext_resource type="Script" path="res://Button_menu.gd" id="19_1hsko"]
+[ext_resource type="Texture2D" uid="uid://dleonxquk26c6" path="res://Image/Autre/Wood_button_menu_continue.png" id="20_np1al"]
+[ext_resource type="Texture2D" uid="uid://dqtwxafuyt5rp" path="res://Image/Autre/Wood_button_menu_back.png" id="21_nng6d"]
 
-[node name="Plateau_echec" type="Sprite2D"]
+[node name="Chess_game" type="TextureRect"]
+offset_left = -100.0
+offset_top = -137.0
+offset_right = 620.0
+offset_bottom = 583.0
+scale = Vector2(1.65278, 1.65026)
+texture = ExtResource("1_c0lef")
+
+[node name="Plateau_echec" type="Sprite2D" parent="."]
+position = Vector2(121.008, 143.619)
+scale = Vector2(0.613361, 0.613361)
 texture = ExtResource("1_ngoat")
 centered = false
 script = ExtResource("2_tfyql")
 
-[node name="Pawn_white" parent="." instance=ExtResource("2_txj3q")]
+[node name="Pawn_white" parent="Plateau_echec" instance=ExtResource("2_txj3q")]
 position = Vector2(0, 600)
 
-[node name="Pawn_white2" parent="." instance=ExtResource("2_txj3q")]
+[node name="Pawn_white2" parent="Plateau_echec" instance=ExtResource("2_txj3q")]
 position = Vector2(100, 600)
 
-[node name="Pawn_white3" parent="." instance=ExtResource("2_txj3q")]
+[node name="Pawn_white3" parent="Plateau_echec" instance=ExtResource("2_txj3q")]
 position = Vector2(200, 600)
 
-[node name="Pawn_white4" parent="." instance=ExtResource("2_txj3q")]
+[node name="Pawn_white4" parent="Plateau_echec" instance=ExtResource("2_txj3q")]
 position = Vector2(300, 600)
 
-[node name="Pawn_white5" parent="." instance=ExtResource("2_txj3q")]
+[node name="Pawn_white5" parent="Plateau_echec" instance=ExtResource("2_txj3q")]
 position = Vector2(400, 600)
 
-[node name="Pawn_white6" parent="." instance=ExtResource("2_txj3q")]
+[node name="Pawn_white6" parent="Plateau_echec" instance=ExtResource("2_txj3q")]
 position = Vector2(500, 600)
 
-[node name="Pawn_white7" parent="." instance=ExtResource("2_txj3q")]
+[node name="Pawn_white7" parent="Plateau_echec" instance=ExtResource("2_txj3q")]
 position = Vector2(600, 600)
 
-[node name="Pawn_white8" parent="." instance=ExtResource("2_txj3q")]
+[node name="Pawn_white8" parent="Plateau_echec" instance=ExtResource("2_txj3q")]
 position = Vector2(700, 600)
 
-[node name="Knight_white" parent="." instance=ExtResource("4_g4f3a")]
+[node name="Knight_white" parent="Plateau_echec" instance=ExtResource("4_g4f3a")]
 position = Vector2(100, 700)
 
-[node name="Knight_white2" parent="." instance=ExtResource("4_g4f3a")]
+[node name="Knight_white2" parent="Plateau_echec" instance=ExtResource("4_g4f3a")]
 position = Vector2(600, 700)
 
-[node name="Bishop_white" parent="." instance=ExtResource("4_v0trg")]
+[node name="Bishop_white" parent="Plateau_echec" instance=ExtResource("4_v0trg")]
 position = Vector2(200, 700)
 
-[node name="Bishop_white2" parent="." instance=ExtResource("4_v0trg")]
+[node name="Bishop_white2" parent="Plateau_echec" instance=ExtResource("4_v0trg")]
 position = Vector2(500, 700)
 
-[node name="Rook_white" parent="." instance=ExtResource("5_5vehg")]
+[node name="Rook_white" parent="Plateau_echec" instance=ExtResource("5_5vehg")]
 position = Vector2(0, 700)
 
-[node name="Rook_white2" parent="." instance=ExtResource("5_5vehg")]
+[node name="Rook_white2" parent="Plateau_echec" instance=ExtResource("5_5vehg")]
 position = Vector2(700, 700)
 
-[node name="Queen_white" parent="." instance=ExtResource("7_xtomi")]
+[node name="Queen_white" parent="Plateau_echec" instance=ExtResource("7_xtomi")]
 position = Vector2(300, 700)
 
-[node name="King_white" parent="." instance=ExtResource("8_2a3sh")]
+[node name="King_white" parent="Plateau_echec" instance=ExtResource("8_2a3sh")]
 position = Vector2(400, 700)
 
-[node name="Pawn_black" parent="." instance=ExtResource("3_apq86")]
+[node name="Pawn_black" parent="Plateau_echec" instance=ExtResource("3_apq86")]
 position = Vector2(0, 100)
 
-[node name="Pawn_black2" parent="." instance=ExtResource("3_apq86")]
+[node name="Pawn_black2" parent="Plateau_echec" instance=ExtResource("3_apq86")]
 position = Vector2(100, 100)
 
-[node name="Pawn_black3" parent="." instance=ExtResource("3_apq86")]
+[node name="Pawn_black3" parent="Plateau_echec" instance=ExtResource("3_apq86")]
 position = Vector2(200, 100)
 
-[node name="Pawn_black4" parent="." instance=ExtResource("3_apq86")]
+[node name="Pawn_black4" parent="Plateau_echec" instance=ExtResource("3_apq86")]
 position = Vector2(300, 100)
 
-[node name="Pawn_black5" parent="." instance=ExtResource("3_apq86")]
+[node name="Pawn_black5" parent="Plateau_echec" instance=ExtResource("3_apq86")]
 position = Vector2(400, 100)
 
-[node name="Pawn_black6" parent="." instance=ExtResource("3_apq86")]
+[node name="Pawn_black6" parent="Plateau_echec" instance=ExtResource("3_apq86")]
 position = Vector2(500, 100)
 
-[node name="Pawn_black7" parent="." instance=ExtResource("3_apq86")]
+[node name="Pawn_black7" parent="Plateau_echec" instance=ExtResource("3_apq86")]
 position = Vector2(600, 100)
 
-[node name="Pawn_black8" parent="." instance=ExtResource("3_apq86")]
+[node name="Pawn_black8" parent="Plateau_echec" instance=ExtResource("3_apq86")]
 position = Vector2(700, 100)
 
-[node name="Knight_black" parent="." instance=ExtResource("8_6jpi4")]
+[node name="Knight_black" parent="Plateau_echec" instance=ExtResource("8_6jpi4")]
 position = Vector2(100, 0)
 
-[node name="Knight_black2" parent="." instance=ExtResource("8_6jpi4")]
+[node name="Knight_black2" parent="Plateau_echec" instance=ExtResource("8_6jpi4")]
 position = Vector2(600, 0)
 
-[node name="Bishop_black" parent="." instance=ExtResource("7_3b01d")]
+[node name="Bishop_black" parent="Plateau_echec" instance=ExtResource("7_3b01d")]
 position = Vector2(200, 0)
 
-[node name="Bishop_black2" parent="." instance=ExtResource("7_3b01d")]
+[node name="Bishop_black2" parent="Plateau_echec" instance=ExtResource("7_3b01d")]
 position = Vector2(500, 0)
 
-[node name="Rook_black" parent="." instance=ExtResource("6_j6mi8")]
+[node name="Rook_black" parent="Plateau_echec" instance=ExtResource("6_j6mi8")]
 
-[node name="Rook_black2" parent="." instance=ExtResource("6_j6mi8")]
+[node name="Rook_black2" parent="Plateau_echec" instance=ExtResource("6_j6mi8")]
 position = Vector2(700, 0)
 
-[node name="Queen_black" parent="." instance=ExtResource("12_omt7s")]
+[node name="Queen_black" parent="Plateau_echec" instance=ExtResource("12_omt7s")]
 position = Vector2(300, 0)
 
-[node name="King_black" parent="." instance=ExtResource("14_fse2i")]
+[node name="King_black" parent="Plateau_echec" instance=ExtResource("14_fse2i")]
 position = Vector2(400, 0)
 
-[connection signal="opponent_turned" from="Pawn_white" to="." method="_on_pawn_white_opponent_turned"]
-[connection signal="promotion" from="Pawn_white" to="." method="_on_pawn_white_promotion"]
-[connection signal="opponent_turned" from="Pawn_white2" to="." method="_on_pawn_white_2_opponent_turned"]
-[connection signal="promotion" from="Pawn_white2" to="." method="_on_pawn_white_2_promotion"]
-[connection signal="opponent_turned" from="Pawn_white3" to="." method="_on_pawn_white_3_opponent_turned"]
-[connection signal="promotion" from="Pawn_white3" to="." method="_on_pawn_white_3_promotion"]
-[connection signal="opponent_turned" from="Pawn_white4" to="." method="_on_pawn_white_4_opponent_turned"]
-[connection signal="promotion" from="Pawn_white4" to="." method="_on_pawn_white_4_promotion"]
-[connection signal="opponent_turned" from="Pawn_white5" to="." method="_on_pawn_white_5_opponent_turned"]
-[connection signal="promotion" from="Pawn_white5" to="." method="_on_pawn_white_5_promotion"]
-[connection signal="opponent_turned" from="Pawn_white6" to="." method="_on_pawn_white_6_opponent_turned"]
-[connection signal="promotion" from="Pawn_white6" to="." method="_on_pawn_white_6_promotion"]
-[connection signal="opponent_turned" from="Pawn_white7" to="." method="_on_pawn_white_7_opponent_turned"]
-[connection signal="promotion" from="Pawn_white7" to="." method="_on_pawn_white_7_promotion"]
-[connection signal="opponent_turned" from="Pawn_white8" to="." method="_on_pawn_white_8_opponent_turned"]
-[connection signal="promotion" from="Pawn_white8" to="." method="_on_pawn_white_8_promotion"]
-[connection signal="opponent_turned" from="Knight_white" to="." method="_on_knight_white_opponent_turned"]
-[connection signal="opponent_turned" from="Knight_white2" to="." method="_on_knight_white_2_opponent_turned"]
-[connection signal="opponent_turned" from="Bishop_white" to="." method="_on_bishop_white_opponent_turned"]
-[connection signal="opponent_turned" from="Bishop_white2" to="." method="_on_bishop_white_2_opponent_turned"]
-[connection signal="opponent_turned" from="Rook_white" to="." method="_on_rook_white_opponent_turned"]
-[connection signal="opponent_turned" from="Rook_white2" to="." method="_on_rook_white_2_opponent_turned"]
-[connection signal="opponent_turned" from="Queen_white" to="." method="_on_queen_white_opponent_turned"]
-[connection signal="Grand_roque" from="King_white" to="Rook_white" method="_on_king_white_grand_roque"]
-[connection signal="Petit_roque" from="King_white" to="Rook_white2" method="_on_king_white_petit_roque"]
-[connection signal="check_to_the_king" from="King_white" to="." method="_on_king_white_check_to_the_king"]
-[connection signal="checkmate_to_the_king" from="King_white" to="." method="_on_king_white_checkmate_to_the_king"]
-[connection signal="opponent_turned" from="King_white" to="." method="_on_king_white_opponent_turned"]
-[connection signal="opponent_turned" from="Pawn_black" to="." method="_on_pawn_black_opponent_turned"]
-[connection signal="promotion" from="Pawn_black" to="." method="_on_pawn_black_promotion"]
-[connection signal="opponent_turned" from="Pawn_black2" to="." method="_on_pawn_black_2_opponent_turned"]
-[connection signal="promotion" from="Pawn_black2" to="." method="_on_pawn_black_2_promotion"]
-[connection signal="opponent_turned" from="Pawn_black3" to="." method="_on_pawn_black_3_opponent_turned"]
-[connection signal="promotion" from="Pawn_black3" to="." method="_on_pawn_black_3_promotion"]
-[connection signal="opponent_turned" from="Pawn_black4" to="." method="_on_pawn_black_4_opponent_turned"]
-[connection signal="promotion" from="Pawn_black4" to="." method="_on_pawn_black_4_promotion"]
-[connection signal="opponent_turned" from="Pawn_black5" to="." method="_on_pawn_black_5_opponent_turned"]
-[connection signal="promotion" from="Pawn_black5" to="." method="_on_pawn_black_5_promotion"]
-[connection signal="opponent_turned" from="Pawn_black6" to="." method="_on_pawn_black_6_opponent_turned"]
-[connection signal="promotion" from="Pawn_black6" to="." method="_on_pawn_black_6_promotion"]
-[connection signal="opponent_turned" from="Pawn_black7" to="." method="_on_pawn_black_7_opponent_turned"]
-[connection signal="promotion" from="Pawn_black7" to="." method="_on_pawn_black_7_promotion"]
-[connection signal="opponent_turned" from="Pawn_black8" to="." method="_on_pawn_black_8_opponent_turned"]
-[connection signal="promotion" from="Pawn_black8" to="." method="_on_pawn_black_8_promotion"]
-[connection signal="opponent_turned" from="Knight_black" to="." method="_on_knight_black_opponent_turned"]
-[connection signal="opponent_turned" from="Knight_black2" to="." method="_on_knight_black_2_opponent_turned"]
-[connection signal="opponent_turned" from="Bishop_black" to="." method="_on_bishop_black_opponent_turned"]
-[connection signal="opponent_turned" from="Bishop_black2" to="." method="_on_bishop_black_2_opponent_turned"]
-[connection signal="opponent_turned" from="Rook_black" to="." method="_on_rook_black_opponent_turned"]
-[connection signal="opponent_turned" from="Rook_black2" to="." method="_on_rook_black_2_opponent_turned"]
-[connection signal="opponent_turned" from="Queen_black" to="." method="_on_queen_black_opponent_turned"]
-[connection signal="Grand_roque" from="King_black" to="Rook_black" method="_on_king_black_grand_roque"]
-[connection signal="Petit_roque" from="King_black" to="Rook_black2" method="_on_king_black_petit_roque"]
-[connection signal="check_to_the_king" from="King_black" to="." method="_on_king_black_check_to_the_king"]
-[connection signal="checkmate_to_the_king" from="King_black" to="." method="_on_king_black_checkmate_to_the_king"]
-[connection signal="opponent_turned" from="King_black" to="." method="_on_king_black_opponent_turned"]
+[node name="Square_last_move" type="Sprite2D" parent="Plateau_echec"]
+visible = false
+texture = ExtResource("15_j3uqk")
+centered = false
+
+[node name="Display_text_turn" type="Label" parent="Plateau_echec"]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -8.0
+offset_top = 19.2098
+offset_bottom = 67.2098
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 31
+horizontal_alignment = 1
+script = ExtResource("15_kqaeh")
+
+[node name="Text_echec_white" type="Label" parent="Plateau_echec"]
+visible = false
+offset_left = -100.0
+offset_top = 771.0
+offset_bottom = 800.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 18
+text = "Echec"
+horizontal_alignment = 1
+
+[node name="Text_echec_black" type="Label" parent="Plateau_echec"]
+visible = false
+offset_left = 800.0
+offset_top = 1.0
+offset_right = 899.0
+offset_bottom = 24.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 18
+text = "Echec"
+horizontal_alignment = 1
+
+[node name="Text_timer_white" type="Label" parent="Plateau_echec"]
+visible = false
+offset_left = 646.116
+offset_top = 825.908
+offset_right = 686.116
+offset_bottom = 867.908
+theme_override_font_sizes/font_size = 30
+
+[node name="Text_timer_black" type="Label" parent="Plateau_echec"]
+visible = false
+offset_left = 643.157
+offset_top = -73.1165
+offset_right = 683.157
+offset_bottom = -31.1165
+theme_override_font_sizes/font_size = 30
+
+[node name="Timer_white" type="Timer" parent="Plateau_echec"]
+autostart = true
+
+[node name="Timer_black" type="Timer" parent="Plateau_echec"]
+autostart = true
+
+[node name="Button_menu" type="Button" parent="."]
+layout_mode = 0
+offset_left = 70.7899
+offset_top = 87.8647
+offset_right = 152.79
+offset_bottom = 135.865
+scale = Vector2(1, 1)
+icon = ExtResource("2_ikgit")
+flat = true
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("19_1hsko")
+
+[node name="Button_menu_continue" type="Button" parent="Button_menu"]
+visible = false
+layout_mode = 0
+offset_left = 228.101
+offset_top = 213.299
+offset_right = 364.101
+offset_bottom = 296.299
+scale = Vector2(1, 1)
+icon = ExtResource("20_np1al")
+flat = true
+
+[node name="Button_menu_back" type="Button" parent="Button_menu"]
+visible = false
+layout_mode = 0
+offset_left = 227.496
+offset_top = 312.071
+offset_right = 363.496
+offset_bottom = 395.071
+scale = Vector2(1, 1)
+icon = ExtResource("21_nng6d")
+flat = true
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[connection signal="opponent_turned" from="Plateau_echec/Pawn_white" to="Plateau_echec" method="_on_pawn_white_opponent_turned"]
+[connection signal="promotion" from="Plateau_echec/Pawn_white" to="Plateau_echec" method="_on_pawn_white_promotion"]
+[connection signal="opponent_turned" from="Plateau_echec/Pawn_white2" to="Plateau_echec" method="_on_pawn_white_2_opponent_turned"]
+[connection signal="promotion" from="Plateau_echec/Pawn_white2" to="Plateau_echec" method="_on_pawn_white_2_promotion"]
+[connection signal="opponent_turned" from="Plateau_echec/Pawn_white3" to="Plateau_echec" method="_on_pawn_white_3_opponent_turned"]
+[connection signal="promotion" from="Plateau_echec/Pawn_white3" to="Plateau_echec" method="_on_pawn_white_3_promotion"]
+[connection signal="opponent_turned" from="Plateau_echec/Pawn_white4" to="Plateau_echec" method="_on_pawn_white_4_opponent_turned"]
+[connection signal="promotion" from="Plateau_echec/Pawn_white4" to="Plateau_echec" method="_on_pawn_white_4_promotion"]
+[connection signal="opponent_turned" from="Plateau_echec/Pawn_white5" to="Plateau_echec" method="_on_pawn_white_5_opponent_turned"]
+[connection signal="promotion" from="Plateau_echec/Pawn_white5" to="Plateau_echec" method="_on_pawn_white_5_promotion"]
+[connection signal="opponent_turned" from="Plateau_echec/Pawn_white6" to="Plateau_echec" method="_on_pawn_white_6_opponent_turned"]
+[connection signal="promotion" from="Plateau_echec/Pawn_white6" to="Plateau_echec" method="_on_pawn_white_6_promotion"]
+[connection signal="opponent_turned" from="Plateau_echec/Pawn_white7" to="Plateau_echec" method="_on_pawn_white_7_opponent_turned"]
+[connection signal="promotion" from="Plateau_echec/Pawn_white7" to="Plateau_echec" method="_on_pawn_white_7_promotion"]
+[connection signal="opponent_turned" from="Plateau_echec/Pawn_white8" to="Plateau_echec" method="_on_pawn_white_8_opponent_turned"]
+[connection signal="promotion" from="Plateau_echec/Pawn_white8" to="Plateau_echec" method="_on_pawn_white_8_promotion"]
+[connection signal="opponent_turned" from="Plateau_echec/Knight_white" to="Plateau_echec" method="_on_knight_white_opponent_turned"]
+[connection signal="opponent_turned" from="Plateau_echec/Knight_white2" to="Plateau_echec" method="_on_knight_white_2_opponent_turned"]
+[connection signal="opponent_turned" from="Plateau_echec/Bishop_white" to="Plateau_echec" method="_on_bishop_white_opponent_turned"]
+[connection signal="opponent_turned" from="Plateau_echec/Bishop_white2" to="Plateau_echec" method="_on_bishop_white_2_opponent_turned"]
+[connection signal="opponent_turned" from="Plateau_echec/Rook_white" to="Plateau_echec" method="_on_rook_white_opponent_turned"]
+[connection signal="opponent_turned" from="Plateau_echec/Rook_white2" to="Plateau_echec" method="_on_rook_white_2_opponent_turned"]
+[connection signal="opponent_turned" from="Plateau_echec/Queen_white" to="Plateau_echec" method="_on_queen_white_opponent_turned"]
+[connection signal="Grand_roque" from="Plateau_echec/King_white" to="Plateau_echec/Rook_white" method="_on_king_white_grand_roque"]
+[connection signal="Petit_roque" from="Plateau_echec/King_white" to="Plateau_echec/Rook_white2" method="_on_king_white_petit_roque"]
+[connection signal="check_to_the_king" from="Plateau_echec/King_white" to="Plateau_echec" method="_on_king_white_check_to_the_king"]
+[connection signal="checkmate_to_the_king" from="Plateau_echec/King_white" to="Plateau_echec" method="_on_king_white_checkmate_to_the_king"]
+[connection signal="opponent_turned" from="Plateau_echec/King_white" to="Plateau_echec" method="_on_king_white_opponent_turned"]
+[connection signal="opponent_turned" from="Plateau_echec/Pawn_black" to="Plateau_echec" method="_on_pawn_black_opponent_turned"]
+[connection signal="promotion" from="Plateau_echec/Pawn_black" to="Plateau_echec" method="_on_pawn_black_promotion"]
+[connection signal="opponent_turned" from="Plateau_echec/Pawn_black2" to="Plateau_echec" method="_on_pawn_black_2_opponent_turned"]
+[connection signal="promotion" from="Plateau_echec/Pawn_black2" to="Plateau_echec" method="_on_pawn_black_2_promotion"]
+[connection signal="opponent_turned" from="Plateau_echec/Pawn_black3" to="Plateau_echec" method="_on_pawn_black_3_opponent_turned"]
+[connection signal="promotion" from="Plateau_echec/Pawn_black3" to="Plateau_echec" method="_on_pawn_black_3_promotion"]
+[connection signal="opponent_turned" from="Plateau_echec/Pawn_black4" to="Plateau_echec" method="_on_pawn_black_4_opponent_turned"]
+[connection signal="promotion" from="Plateau_echec/Pawn_black4" to="Plateau_echec" method="_on_pawn_black_4_promotion"]
+[connection signal="opponent_turned" from="Plateau_echec/Pawn_black5" to="Plateau_echec" method="_on_pawn_black_5_opponent_turned"]
+[connection signal="promotion" from="Plateau_echec/Pawn_black5" to="Plateau_echec" method="_on_pawn_black_5_promotion"]
+[connection signal="opponent_turned" from="Plateau_echec/Pawn_black6" to="Plateau_echec" method="_on_pawn_black_6_opponent_turned"]
+[connection signal="promotion" from="Plateau_echec/Pawn_black6" to="Plateau_echec" method="_on_pawn_black_6_promotion"]
+[connection signal="opponent_turned" from="Plateau_echec/Pawn_black7" to="Plateau_echec" method="_on_pawn_black_7_opponent_turned"]
+[connection signal="promotion" from="Plateau_echec/Pawn_black7" to="Plateau_echec" method="_on_pawn_black_7_promotion"]
+[connection signal="opponent_turned" from="Plateau_echec/Pawn_black8" to="Plateau_echec" method="_on_pawn_black_8_opponent_turned"]
+[connection signal="promotion" from="Plateau_echec/Pawn_black8" to="Plateau_echec" method="_on_pawn_black_8_promotion"]
+[connection signal="opponent_turned" from="Plateau_echec/Knight_black" to="Plateau_echec" method="_on_knight_black_opponent_turned"]
+[connection signal="opponent_turned" from="Plateau_echec/Knight_black2" to="Plateau_echec" method="_on_knight_black_2_opponent_turned"]
+[connection signal="opponent_turned" from="Plateau_echec/Bishop_black" to="Plateau_echec" method="_on_bishop_black_opponent_turned"]
+[connection signal="opponent_turned" from="Plateau_echec/Bishop_black2" to="Plateau_echec" method="_on_bishop_black_2_opponent_turned"]
+[connection signal="opponent_turned" from="Plateau_echec/Rook_black" to="Plateau_echec" method="_on_rook_black_opponent_turned"]
+[connection signal="opponent_turned" from="Plateau_echec/Rook_black2" to="Plateau_echec" method="_on_rook_black_2_opponent_turned"]
+[connection signal="opponent_turned" from="Plateau_echec/Queen_black" to="Plateau_echec" method="_on_queen_black_opponent_turned"]
+[connection signal="Grand_roque" from="Plateau_echec/King_black" to="Plateau_echec/Rook_black" method="_on_king_black_grand_roque"]
+[connection signal="Petit_roque" from="Plateau_echec/King_black" to="Plateau_echec/Rook_black2" method="_on_king_black_petit_roque"]
+[connection signal="check_to_the_king" from="Plateau_echec/King_black" to="Plateau_echec" method="_on_king_black_check_to_the_king"]
+[connection signal="checkmate_to_the_king" from="Plateau_echec/King_black" to="Plateau_echec" method="_on_king_black_checkmate_to_the_king"]
+[connection signal="opponent_turned" from="Plateau_echec/King_black" to="Plateau_echec" method="_on_king_black_opponent_turned"]
+[connection signal="pressed" from="Button_menu/Button_menu_continue" to="Button_menu" method="_on_button_menu_continue_pressed"]
+[connection signal="pressed" from="Button_menu/Button_menu_back" to="Button_menu" method="_on_button_menu_back_pressed"]

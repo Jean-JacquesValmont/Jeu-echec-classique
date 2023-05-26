@@ -20,6 +20,7 @@ var player_turn = "white"
 var piece_select = "No piece selected"
 var my_node_id = get_node(".").get_instance_id() #Permet de récupérer l'ID unique du noeud
 @onready var my_node_name = get_node(".").get_name() #Permet de récupérer le nom du noeud
+@onready var Sound_piece_move = get_node("Sound_piece_move")
 var i = 2 # Le i correspond à l'axe y (de gauche à droite)
 var j = 4 # Le j correspond à l'axe x (de haut en bas)
 var move_one_square = 100
@@ -153,6 +154,7 @@ func _input(event):
 							position_piece_on_the_chessboard[i][j] = "bishop_black"
 							# Déselectionne la pièce après le déplacement
 							piece_select = "No piece selected"
+							get_node("Sound_piece_move").play()
 							
 							print(piece_select)
 							print("i: ", i)
@@ -185,6 +187,7 @@ func _input(event):
 							position_piece_on_the_chessboard[i][j] = "bishop_black"
 							# Déselectionne la pièce après le déplacement
 							piece_select = "No piece selected"
+							get_node("Sound_piece_move").play()
 							
 							print(piece_select)
 							print("i: ", i)
@@ -217,6 +220,7 @@ func _input(event):
 							position_piece_on_the_chessboard[i][j] = "bishop_black"
 							# Déselectionne la pièce après le déplacement
 							piece_select = "No piece selected"
+							get_node("Sound_piece_move").play()
 							
 							print(piece_select)
 							print("i: ", i)
@@ -249,6 +253,7 @@ func _input(event):
 							position_piece_on_the_chessboard[i][j] = "bishop_black"
 							# Déselectionne la pièce après le déplacement
 							piece_select = "No piece selected"
+							get_node("Sound_piece_move").play()
 							
 							print(piece_select)
 							print("i: ", i)
@@ -287,6 +292,7 @@ func _input(event):
 								position_piece_on_the_chessboard[i][j] = "bishop_black"
 								# Déselectionne la pièce après le déplacement
 								piece_select = "No piece selected"
+								get_node("Sound_piece_move").play()
 								
 								print(piece_select)
 								print("i: ", i)
@@ -319,6 +325,7 @@ func _input(event):
 								position_piece_on_the_chessboard[i][j] = "bishop_black"
 								# Déselectionne la pièce après le déplacement
 								piece_select = "No piece selected"
+								get_node("Sound_piece_move").play()
 								
 								print(piece_select)
 								print("i: ", i)
@@ -352,6 +359,7 @@ func _input(event):
 								position_piece_on_the_chessboard[i][j] = "bishop_black"
 								# Déselectionne la pièce après le déplacement
 								piece_select = "No piece selected"
+								get_node("Sound_piece_move").play()
 								
 								print(piece_select)
 								print("i: ", i)
@@ -384,6 +392,7 @@ func _input(event):
 								position_piece_on_the_chessboard[i][j] = "bishop_black"
 								# Déselectionne la pièce après le déplacement
 								piece_select = "No piece selected"
+								get_node("Sound_piece_move").play()
 								
 								print(piece_select)
 								print("i: ", i)
@@ -452,6 +461,7 @@ func _input(event):
 						attacker_position_shift2_j = 0
 						# Déselectionne la pièce après le déplacement
 						piece_select = "No piece selected"
+						get_node("Sound_piece_move").play()
 						
 						print(piece_select)
 						print("i: ", i)
@@ -482,6 +492,7 @@ func _input(event):
 						attacker_position_shift2_j = 0
 						# Déselectionne la pièce après le déplacement
 						piece_select = "No piece selected"
+						get_node("Sound_piece_move").play()
 						
 						print(piece_select)
 						print("i: ", i)
@@ -498,13 +509,134 @@ func _input(event):
 				elif piece_protects_against_an_attack == true:
 					piece_select = "No piece selected"
 					print(piece_select)
-
+					
+	if Global.preview_piece_move_option == true:
+		if my_node_name != null:
+			preview_move()
+	
 func _on_area_2d_area_entered(area):
 	if player_turn == "white":
-		get_node("/root/Plateau_echec/" + area.get_parent().get_name()).queue_free()
+		get_node("/root/Chess_game/Plateau_echec/" + area.get_parent().get_name()).queue_free()
 		print("piece pris: ",area.get_parent().get_name())
 	else:
 		pass
+
+func preview_move():
+	#Pré-visualisation des mouvements de la pièce
+	var Move_Preview = get_node("Move_preview")
+	if piece_select == my_node_name and king_in_check == false and piece_protects_against_an_attack == false:
+		for f in range(1,max_move_up_right):
+			if position_piece_on_the_chessboard[i-f][j+f] == "0":
+				Move_Preview.get_child(f-1).visible = true
+			elif position_piece_on_the_chessboard[i-f][j+f] == "pawn_white"\
+			or position_piece_on_the_chessboard[i-f][j+f] == "knight_white" or position_piece_on_the_chessboard[i-f][j+f] == "bishop_white"\
+			or position_piece_on_the_chessboard[i-f][j+f] == "rook_white" or position_piece_on_the_chessboard[i-f][j+f] == "queen_white":
+				Move_Preview.get_node("Square_attack_preview_up_right").visible = true
+				Move_Preview.get_node("Square_attack_preview_up_right").position.y = -f * 100
+				Move_Preview.get_node("Square_attack_preview_up_right").position.x = f * 100
+		for f in range(1,max_move_up_left):
+			if position_piece_on_the_chessboard[i-f][j-f] == "0":
+				Move_Preview.get_child(7+f-1).visible = true
+			elif position_piece_on_the_chessboard[i-f][j-f] == "pawn_white"\
+			or position_piece_on_the_chessboard[i-f][j-f] == "knight_white" or position_piece_on_the_chessboard[i-f][j-f] == "bishop_white"\
+			or position_piece_on_the_chessboard[i-f][j-f] == "rook_white" or position_piece_on_the_chessboard[i-f][j-f] == "queen_white":
+				Move_Preview.get_node("Square_attack_preview_up_left").visible = true
+				Move_Preview.get_node("Square_attack_preview_up_left").position.y = -f * 100
+				Move_Preview.get_node("Square_attack_preview_up_left").position.x = -f * 100
+		for f in range(1,max_move_down_right):
+			if position_piece_on_the_chessboard[i+f][j+f] == "0":
+				Move_Preview.get_child(14+f-1).visible = true
+			elif position_piece_on_the_chessboard[i+f][j+f] == "pawn_white"\
+			or position_piece_on_the_chessboard[i+f][j+f] == "knight_white" or position_piece_on_the_chessboard[i+f][j+f] == "bishop_white"\
+			or position_piece_on_the_chessboard[i+f][j+f] == "rook_white" or position_piece_on_the_chessboard[i+f][j+f] == "queen_white":
+				Move_Preview.get_node("Square_attack_preview_down_right").visible = true
+				Move_Preview.get_node("Square_attack_preview_down_right").position.y = f * 100
+				Move_Preview.get_node("Square_attack_preview_down_right").position.x = f * 100
+		for f in range(1,max_move_down_left):
+			if position_piece_on_the_chessboard[i+f][j-f] == "0":
+				Move_Preview.get_child(21+f-1).visible = true
+			elif position_piece_on_the_chessboard[i+f][j-f] == "pawn_white"\
+			or position_piece_on_the_chessboard[i+f][j-f] == "knight_white" or position_piece_on_the_chessboard[i+f][j-f] == "bishop_white"\
+			or position_piece_on_the_chessboard[i+f][j-f] == "rook_white" or position_piece_on_the_chessboard[i+f][j-f] == "queen_white":
+				Move_Preview.get_node("Square_attack_preview_down_left").visible = true
+				Move_Preview.get_node("Square_attack_preview_down_left").position.y = f * 100
+				Move_Preview.get_node("Square_attack_preview_down_left").position.x = -f * 100
+	elif piece_select == my_node_name and king_in_check == true and piece_protects_against_an_attack == false:
+		for f in range(1,21):
+			if position_piece_on_the_chessboard[attacker_position_shift_i][attacker_position_shift_j] == "0"\
+			and Move_Preview.get_child(f-1).position.y == (attacker_position_shift_i - i) * 100\
+			and Move_Preview.get_child(f-1).position.x == (attacker_position_shift_j - j) * 100:
+				Move_Preview.get_child(f-1).visible = true
+			elif position_piece_on_the_chessboard[attacker_position_shift_i][attacker_position_shift_j] != "0"\
+			and Move_Preview.get_child(f-1).position.y == (attacker_position_shift_i - i) * 100\
+			and Move_Preview.get_child(f-1).position.x == (attacker_position_shift_j - j) * 100:
+				Move_Preview.get_node("Square_attack_preview_up_right").visible = true
+				Move_Preview.get_node("Square_attack_preview_up_right").position.y = (attacker_position_shift_i - i) * 100
+				Move_Preview.get_node("Square_attack_preview_up_right").position.x = (attacker_position_shift_j - j) * 100
+			
+			if position_piece_on_the_chessboard[attacker_position_shift2_i][attacker_position_shift2_j] == "0"\
+			and Move_Preview.get_child(f-1).position.y == (attacker_position_shift2_i - i) * 100\
+			and Move_Preview.get_child(f-1).position.x == (attacker_position_shift2_j - j) * 100:
+				Move_Preview.get_child(f-1).visible = true
+			elif position_piece_on_the_chessboard[attacker_position_shift2_i][attacker_position_shift2_j] != "0"\
+			and Move_Preview.get_child(f-1).position.y == (attacker_position_shift2_i - i) * 100\
+			and Move_Preview.get_child(f-1).position.x == (attacker_position_shift2_j - j) * 100:
+				Move_Preview.get_node("Square_attack_preview_up_right").visible = true
+				Move_Preview.get_node("Square_attack_preview_up_right").position.y = (attacker_position_shift2_i - i) * 100
+				Move_Preview.get_node("Square_attack_preview_up_right").position.x = (attacker_position_shift2_j - j) * 100
+	elif piece_select == my_node_name and king_in_check == false and piece_protects_against_an_attack == true:
+		if direction_attack_protect_king == "Haut/Droite":
+			for f in range(1,max_move_up_right):
+				if position_piece_on_the_chessboard[i-f][j+f] == "0":
+					Move_Preview.get_child(f-1).visible = true
+				elif position_piece_on_the_chessboard[i-f][j+f] == "pawn_white"\
+				or position_piece_on_the_chessboard[i-f][j+f] == "knight_white" or position_piece_on_the_chessboard[i-f][j+f] == "bishop_white"\
+				or position_piece_on_the_chessboard[i-f][j+f] == "rook_white" or position_piece_on_the_chessboard[i-f][j+f] == "queen_white":
+					Move_Preview.get_node("Square_attack_preview_up_right").visible = true
+					Move_Preview.get_node("Square_attack_preview_up_right").position.y = -f * 100
+					Move_Preview.get_node("Square_attack_preview_up_right").position.x = f * 100
+		elif direction_attack_protect_king == "Haut/Gauche":
+			for f in range(1,max_move_up_left):
+				if position_piece_on_the_chessboard[i-f][j-f] == "0":
+					Move_Preview.get_child(7+f-1).visible = true
+				elif position_piece_on_the_chessboard[i-f][j-f] == "pawn_white"\
+				or position_piece_on_the_chessboard[i-f][j-f] == "knight_white" or position_piece_on_the_chessboard[i-f][j-f] == "bishop_white"\
+				or position_piece_on_the_chessboard[i-f][j-f] == "rook_white" or position_piece_on_the_chessboard[i-f][j-f] == "queen_white":
+					Move_Preview.get_node("Square_attack_preview_up_left").visible = true
+					Move_Preview.get_node("Square_attack_preview_up_left").position.y = -f * 100
+					Move_Preview.get_node("Square_attack_preview_up_left").position.x = -f * 100
+		elif direction_attack_protect_king == "Bas/Droite":
+			for f in range(1,max_move_down_right):
+				if position_piece_on_the_chessboard[i+f][j+f] == "0":
+					Move_Preview.get_child(14+f-1).visible = true
+				elif position_piece_on_the_chessboard[i+f][j+f] == "pawn_white"\
+				or position_piece_on_the_chessboard[i+f][j+f] == "knight_white" or position_piece_on_the_chessboard[i+f][j+f] == "bishop_white"\
+				or position_piece_on_the_chessboard[i+f][j+f] == "rook_white" or position_piece_on_the_chessboard[i+f][j+f] == "queen_white":
+					Move_Preview.get_node("Square_attack_preview_down_right").visible = true
+					Move_Preview.get_node("Square_attack_preview_down_right").position.y = f * 100
+					Move_Preview.get_node("Square_attack_preview_down_right").position.x = f * 100
+		elif direction_attack_protect_king == "Bas/Gauche":
+			for f in range(1,max_move_down_left):
+				if position_piece_on_the_chessboard[i+f][j-f] == "0":
+					Move_Preview.get_child(21+f-1).visible = true
+				elif position_piece_on_the_chessboard[i+f][j-f] == "pawn_white"\
+				or position_piece_on_the_chessboard[i+f][j-f] == "knight_white" or position_piece_on_the_chessboard[i+f][j-f] == "bishop_white"\
+				or position_piece_on_the_chessboard[i+f][j-f] == "rook_white" or position_piece_on_the_chessboard[i+f][j-f] == "queen_white":
+					Move_Preview.get_node("Square_attack_preview_down_left").visible = true
+					Move_Preview.get_node("Square_attack_preview_down_left").position.y = f * 100
+					Move_Preview.get_node("Square_attack_preview_down_left").position.x = -f * 100
+	else:
+		for f in range(Move_Preview.get_child_count()):
+			Move_Preview.get_child(f).visible = false
+		Move_Preview.get_node("Square_attack_preview_up_right").position.y = -100
+		Move_Preview.get_node("Square_attack_preview_up_right").position.x = 100
+		Move_Preview.get_node("Square_attack_preview_up_left").position.y = -100
+		Move_Preview.get_node("Square_attack_preview_up_left").position.x = -100
+		Move_Preview.get_node("Square_attack_preview_down_right").position.y = 100
+		Move_Preview.get_node("Square_attack_preview_down_right").position.x = 100
+		Move_Preview.get_node("Square_attack_preview_down_left").position.y = 100
+		Move_Preview.get_node("Square_attack_preview_down_left").position.x = -100
+	
 
 func verif_piece_protects_against_an_attack_the_king():
 	#On regarde d'où vient l'attaque
