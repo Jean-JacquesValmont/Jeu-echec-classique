@@ -28,14 +28,14 @@ offset_bottom = 40.0
 [node name="Knight_black_preview_move" type="Sprite2D" parent="Move_preview"]
 visible = false
 modulate = Color(1, 1, 1, 0.498039)
-position = Vector2(100, -200)
+position = Vector2(-100, -200)
 texture = ExtResource("1_cvaoo")
 centered = false
 
 [node name="Knight_black_preview_move2" type="Sprite2D" parent="Move_preview"]
 visible = false
 modulate = Color(1, 1, 1, 0.498039)
-position = Vector2(-100, -200)
+position = Vector2(100, -200)
 texture = ExtResource("1_cvaoo")
 centered = false
 
@@ -70,28 +70,28 @@ centered = false
 [node name="Knight_black_preview_move7" type="Sprite2D" parent="Move_preview"]
 visible = false
 modulate = Color(1, 1, 1, 0.498039)
-position = Vector2(-200, -100)
+position = Vector2(-200, 100)
 texture = ExtResource("1_cvaoo")
 centered = false
 
 [node name="Knight_black_preview_move8" type="Sprite2D" parent="Move_preview"]
 visible = false
 modulate = Color(1, 1, 1, 0.498039)
-position = Vector2(-200, 100)
+position = Vector2(-200, -100)
 texture = ExtResource("1_cvaoo")
 centered = false
 
 [node name="Square_attack_preview" type="Sprite2D" parent="Move_preview"]
 visible = false
 z_index = 1
-position = Vector2(100, -200)
+position = Vector2(-100, -200)
 texture = ExtResource("4_nife0")
 centered = false
 
 [node name="Square_attack_preview2" type="Sprite2D" parent="Move_preview"]
 visible = false
 z_index = 1
-position = Vector2(-100, -200)
+position = Vector2(100, -200)
 texture = ExtResource("4_nife0")
 centered = false
 
