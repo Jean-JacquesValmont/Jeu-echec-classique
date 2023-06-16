@@ -200,7 +200,6 @@ offset_left = 70.7899
 offset_top = 87.8647
 offset_right = 152.79
 offset_bottom = 135.865
-scale = Vector2(1, 1)
 icon = ExtResource("2_ikgit")
 flat = true
 icon_alignment = 1
@@ -214,7 +213,6 @@ offset_left = 228.101
 offset_top = 213.299
 offset_right = 364.101
 offset_bottom = 296.299
-scale = Vector2(1, 1)
 icon = ExtResource("20_np1al")
 flat = true
 
@@ -225,7 +223,6 @@ offset_left = 227.496
 offset_top = 312.071
 offset_right = 363.496
 offset_bottom = 395.071
-scale = Vector2(1, 1)
 icon = ExtResource("21_nng6d")
 flat = true
 
