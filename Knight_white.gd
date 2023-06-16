@@ -62,6 +62,8 @@ func _process(delta):
 #Ecoute si un input se produit
 func _input(event):
 	var mouse_pos = get_local_mouse_position()
+	var table_move_knight_i = [-2,-2,-1,1,2,2,1,-1]
+	var table_move_knight_j = [-1,1,2,2,1,-1,-2,-2]
 	
 	if king_in_check == false:
 		#Vérifie si la pièce est sur sa case de départ et si c'est le tour des blancs
@@ -82,226 +84,38 @@ func _input(event):
 				
 				if piece_protects_against_an_attack == false:
 					#Vérifie qu'on clique bien sur la bonne case
-					#Déplacement en haut à droite
-					if mouse_pos.x >= 0 + move_one_square and mouse_pos.x <= texture.get_width() + move_one_square\
-					and mouse_pos.y >= 0 - 2*move_one_square and mouse_pos.y <= texture.get_height() - 2*move_one_square \
-					and (position_piece_on_the_chessboard[i-2][j+1] == "0" or position_piece_on_the_chessboard[i-2][j+1] == "pawn_black"\
-					or position_piece_on_the_chessboard[i-2][j+1] == "knight_black" or position_piece_on_the_chessboard[i-2][j+1] == "bishop_black"\
-					or position_piece_on_the_chessboard[i-2][j+1] == "rook_black" or position_piece_on_the_chessboard[i-2][j+1] == "queen_black"):
-						#Bouge la pièce de move_one_square = 100 en y
-						move_local_y(-2*move_one_square)
-						move_local_x(move_one_square)
-						#Met à jour la position de la pièce dans le tableau avant déplacement
-						position_piece_on_the_chessboard[i][j] = "0"
-						i -= 2
-						j += 1
-						#Met à jour la position de la pièce dans le tableau après déplacement
-						position_piece_on_the_chessboard[i][j] = "knight_white"
-						# Déselectionne la pièce après le déplacement
-						piece_select = "No piece selected"
-						get_node("Sound_piece_move").play()
-						
-						print(piece_select)
-						print("i: ", i)
-						print("j: ", j)
-						print(position_piece_on_the_chessboard)
-						#Envoie un signal à la scène plateau_echec pour mettre à jour le tour de toutes les pièces et
-						#Et la position dans le tableau.
-						emit_signal("opponent_turned",position_piece_on_the_chessboard)
-						
-					#Déplacement en haut à gauche
-					elif mouse_pos.x >= 0 - move_one_square and mouse_pos.x <= texture.get_width() - move_one_square\
-					and mouse_pos.y >= 0 - 2*move_one_square and mouse_pos.y <= texture.get_height() - 2*move_one_square \
-					and (position_piece_on_the_chessboard[i-2][j-1] == "0" or position_piece_on_the_chessboard[i-2][j-1] == "pawn_black"\
-					or position_piece_on_the_chessboard[i-2][j-1] == "knight_black" or position_piece_on_the_chessboard[i-2][j-1] == "bishop_black"\
-					or position_piece_on_the_chessboard[i-2][j-1] == "rook_black" or position_piece_on_the_chessboard[i-2][j-1] == "queen_black"):
-						#Bouge la pièce de move_one_square = 100 en y
-						move_local_y(-2*move_one_square)
-						move_local_x(-move_one_square)
-						#Met à jour la position de la pièce dans le tableau avant déplacement
-						position_piece_on_the_chessboard[i][j] = "0"
-						i -= 2
-						j -= 1
-						#Met à jour la position de la pièce dans le tableau après déplacement
-						position_piece_on_the_chessboard[i][j] = "knight_white"
-						# Déselectionne la pièce après le déplacement
-						piece_select = "No piece selected"
-						get_node("Sound_piece_move").play()
-						
-						print(piece_select)
-						print("i: ", i)
-						print("j: ", j)
-						print(position_piece_on_the_chessboard)
-						#Envoie un signal à la scène plateau_echec pour mettre à jour le tour de toutes les pièces et
-						#Et la position dans le tableau.
-						emit_signal("opponent_turned",position_piece_on_the_chessboard)
 					
-					#Déplacement vers la droite en haut
-					elif mouse_pos.x >= 0 + 2*move_one_square and mouse_pos.x <= texture.get_width() + 2*move_one_square\
-					and mouse_pos.y >= 0 - move_one_square and mouse_pos.y <= texture.get_height() - move_one_square \
-					and (position_piece_on_the_chessboard[i-1][j+2] == "0" or position_piece_on_the_chessboard[i-1][j+2] == "pawn_black"\
-					or position_piece_on_the_chessboard[i-1][j+2] == "knight_black" or position_piece_on_the_chessboard[i-1][j+2] == "bishop_black"\
-					or position_piece_on_the_chessboard[i-1][j+2] == "rook_black" or position_piece_on_the_chessboard[i-1][j+2] == "queen_black"):
-						#Bouge la pièce de move_one_square = 100 en y
-						move_local_y(-move_one_square)
-						move_local_x(2*move_one_square)
-						#Met à jour la position de la pièce dans le tableau avant déplacement
-						position_piece_on_the_chessboard[i][j] = "0"
-						i -= 1
-						j += 2
-						#Met à jour la position de la pièce dans le tableau après déplacement
-						position_piece_on_the_chessboard[i][j] = "knight_white"
-						# Déselectionne la pièce après le déplacement
-						piece_select = "No piece selected"
-						get_node("Sound_piece_move").play()
-						
-						print(piece_select)
-						print("i: ", i)
-						print("j: ", j)
-						print(position_piece_on_the_chessboard)
-						#Envoie un signal à la scène plateau_echec pour mettre à jour le tour de toutes les pièces et
-						#Et la position dans le tableau.
-						emit_signal("opponent_turned",position_piece_on_the_chessboard)
-						
-					#Déplacement vers la droite en bas
-					elif mouse_pos.x >= 0 + 2*move_one_square and mouse_pos.x <= texture.get_width() + 2*move_one_square\
-					and mouse_pos.y >= 0 + move_one_square and mouse_pos.y <= texture.get_height() + move_one_square \
-					and (position_piece_on_the_chessboard[i+1][j+2] == "0" or position_piece_on_the_chessboard[i+1][j+2] == "pawn_black"\
-					or position_piece_on_the_chessboard[i+1][j+2] == "knight_black" or position_piece_on_the_chessboard[i+1][j+2] == "bishop_black"\
-					or position_piece_on_the_chessboard[i+1][j+2] == "rook_black" or position_piece_on_the_chessboard[i+1][j+2] == "queen_black"):
-						#Bouge la pièce de move_one_square = 100 en y
-						move_local_y(move_one_square)
-						move_local_x(2*move_one_square)
-						#Met à jour la position de la pièce dans le tableau avant déplacement
-						position_piece_on_the_chessboard[i][j] = "0"
-						i += 1
-						j += 2
-						#Met à jour la position de la pièce dans le tableau après déplacement
-						position_piece_on_the_chessboard[i][j] = "knight_white"
-						# Déselectionne la pièce après le déplacement
-						piece_select = "No piece selected"
-						get_node("Sound_piece_move").play()
-						
-						print(piece_select)
-						print("i: ", i)
-						print("j: ", j)
-						print(position_piece_on_the_chessboard)
-						#Envoie un signal à la scène plateau_echec pour mettre à jour le tour de toutes les pièces et
-						#Et la position dans le tableau.
-						emit_signal("opponent_turned",position_piece_on_the_chessboard)
-						
-					#Déplacement en bas à droite
-					elif mouse_pos.x >= 0 + move_one_square and mouse_pos.x <= texture.get_width() + move_one_square\
-					and mouse_pos.y >= 0 + 2*move_one_square and mouse_pos.y <= texture.get_height() + 2*move_one_square \
-					and (position_piece_on_the_chessboard[i+2][j+1] == "0" or position_piece_on_the_chessboard[i+2][j+1] == "pawn_black"\
-					or position_piece_on_the_chessboard[i+2][j+1] == "knight_black" or position_piece_on_the_chessboard[i+2][j+1] == "bishop_black"\
-					or position_piece_on_the_chessboard[i+2][j+1] == "rook_black" or position_piece_on_the_chessboard[i+2][j+1] == "queen_black"):
-						#Bouge la pièce de move_one_square = 100 en y
-						move_local_y(2*move_one_square)
-						move_local_x(move_one_square)
-						#Met à jour la position de la pièce dans le tableau avant déplacement
-						position_piece_on_the_chessboard[i][j] = "0"
-						i += 2
-						j += 1
-						#Met à jour la position de la pièce dans le tableau après déplacement
-						position_piece_on_the_chessboard[i][j] = "knight_white"
-						# Déselectionne la pièce après le déplacement
-						piece_select = "No piece selected"
-						get_node("Sound_piece_move").play()
-						
-						print(piece_select)
-						print("i: ", i)
-						print("j: ", j)
-						print(position_piece_on_the_chessboard)
-						#Envoie un signal à la scène plateau_echec pour mettre à jour le tour de toutes les pièces et
-						#Et la position dans le tableau.
-						emit_signal("opponent_turned",position_piece_on_the_chessboard)
-						
-					#Déplacement en bas à gauche
-					elif mouse_pos.x >= 0 - move_one_square and mouse_pos.x <= texture.get_width() - move_one_square\
-					and mouse_pos.y >= 0 + 2*move_one_square and mouse_pos.y <= texture.get_height() + 2*move_one_square \
-					and (position_piece_on_the_chessboard[i+2][j-1] == "0" or position_piece_on_the_chessboard[i+2][j-1] == "pawn_black"\
-					or position_piece_on_the_chessboard[i+2][j-1] == "knight_black" or position_piece_on_the_chessboard[i+2][j-1] == "bishop_black"\
-					or position_piece_on_the_chessboard[i+2][j-1] == "rook_black" or position_piece_on_the_chessboard[i+2][j-1] == "queen_black"):
-						#Bouge la pièce de move_one_square = 100 en y
-						move_local_y(2*move_one_square)
-						move_local_x(-move_one_square)
-						#Met à jour la position de la pièce dans le tableau avant déplacement
-						position_piece_on_the_chessboard[i][j] = "0"
-						i += 2
-						j -= 1
-						#Met à jour la position de la pièce dans le tableau après déplacement
-						position_piece_on_the_chessboard[i][j] = "knight_white"
-						# Déselectionne la pièce après le déplacement
-						piece_select = "No piece selected"
-						get_node("Sound_piece_move").play()
-						
-						print(piece_select)
-						print("i: ", i)
-						print("j: ", j)
-						print(position_piece_on_the_chessboard)
-						#Envoie un signal à la scène plateau_echec pour mettre à jour le tour de toutes les pièces et
-						#Et la position dans le tableau.
-						emit_signal("opponent_turned",position_piece_on_the_chessboard)
-						
-					#Déplacement vers la gauche en haut
-					elif mouse_pos.x >= 0 - 2*move_one_square and mouse_pos.x <= texture.get_width() - 2*move_one_square\
-					and mouse_pos.y >= 0 - move_one_square and mouse_pos.y <= texture.get_height() - move_one_square \
-					and (position_piece_on_the_chessboard[i-1][j-2] == "0" or position_piece_on_the_chessboard[i-1][j-2] == "pawn_black"\
-					or position_piece_on_the_chessboard[i-1][j-2] == "knight_black" or position_piece_on_the_chessboard[i-1][j-2] == "bishop_black"\
-					or position_piece_on_the_chessboard[i-1][j-2] == "rook_black" or position_piece_on_the_chessboard[i-1][j-2] == "queen_black"):
-						#Bouge la pièce de move_one_square = 100 en y
-						move_local_y(-move_one_square)
-						move_local_x(-2*move_one_square)
-						#Met à jour la position de la pièce dans le tableau avant déplacement
-						position_piece_on_the_chessboard[i][j] = "0"
-						i -= 1
-						j -= 2
-						#Met à jour la position de la pièce dans le tableau après déplacement
-						position_piece_on_the_chessboard[i][j] = "knight_white"
-						# Déselectionne la pièce après le déplacement
-						piece_select = "No piece selected"
-						get_node("Sound_piece_move").play()
-						
-						print(piece_select)
-						print("i: ", i)
-						print("j: ", j)
-						print(position_piece_on_the_chessboard)
-						
-						#Envoie un signal à la scène plateau_echec pour mettre à jour le tour de toutes les pièces et
-						#Et la position dans le tableau.
-						emit_signal("opponent_turned",position_piece_on_the_chessboard)
-						
-					#Déplacement vers la gauche en bas
-					elif mouse_pos.x >= 0 - 2*move_one_square and mouse_pos.x <= texture.get_width() - 2*move_one_square\
-					and mouse_pos.y >= 0 + move_one_square and mouse_pos.y <= texture.get_height() + move_one_square \
-					and (position_piece_on_the_chessboard[i+1][j-2] == "0" or position_piece_on_the_chessboard[i+1][j-2] == "pawn_black"\
-					or position_piece_on_the_chessboard[i+1][j-2] == "knight_black" or position_piece_on_the_chessboard[i+1][j-2] == "bishop_black"\
-					or position_piece_on_the_chessboard[i+1][j-2] == "rook_black" or position_piece_on_the_chessboard[i+1][j-2] == "queen_black"):
-						#Bouge la pièce de move_one_square = 100 en y
-						move_local_y(move_one_square)
-						move_local_x(-2*move_one_square)
-						#Met à jour la position de la pièce dans le tableau avant déplacement
-						position_piece_on_the_chessboard[i][j] = "0"
-						i += 1
-						j -= 2
-						#Met à jour la position de la pièce dans le tableau après déplacement
-						position_piece_on_the_chessboard[i][j] = "knight_white"
-						# Déselectionne la pièce après le déplacement
-						piece_select = "No piece selected"
-						get_node("Sound_piece_move").play()
-						
-						print(piece_select)
-						print("i: ", i)
-						print("j: ", j)
-						print(position_piece_on_the_chessboard)
-						#Envoie un signal à la scène plateau_echec pour mettre à jour le tour de toutes les pièces et
-						#Et la position dans le tableau.
-						emit_signal("opponent_turned",position_piece_on_the_chessboard)
+					for f in range(8):
+						#Déplacement en haut à droite
+						if mouse_pos.x >= 0 + table_move_knight_j[f]*move_one_square and mouse_pos.x <= texture.get_width() + table_move_knight_j[f]*move_one_square\
+						and mouse_pos.y >= 0 + table_move_knight_i[f]*move_one_square and mouse_pos.y <= texture.get_height() + table_move_knight_i[f]*move_one_square \
+						and (position_piece_on_the_chessboard[i+table_move_knight_i[f]][j+table_move_knight_j[f]] == "0" or position_piece_on_the_chessboard[i+table_move_knight_i[f]][j+table_move_knight_j[f]] == "pawn_black"\
+						or position_piece_on_the_chessboard[i+table_move_knight_i[f]][j+table_move_knight_j[f]] == "knight_black" or position_piece_on_the_chessboard[i+table_move_knight_i[f]][j+table_move_knight_j[f]] == "bishop_black"\
+						or position_piece_on_the_chessboard[i+table_move_knight_i[f]][j+table_move_knight_j[f]] == "rook_black" or position_piece_on_the_chessboard[i+table_move_knight_i[f]][j+table_move_knight_j[f]] == "queen_black"):
+							#Bouge la pièce de move_one_square = 100 en y
+							move_local_y(table_move_knight_i[f]*move_one_square)
+							move_local_x(table_move_knight_j[f]*move_one_square)
+							#Met à jour la position de la pièce dans le tableau avant déplacement
+							position_piece_on_the_chessboard[i][j] = "0"
+							i += table_move_knight_i[f]
+							j += table_move_knight_j[f]
+							#Met à jour la position de la pièce dans le tableau après déplacement
+							position_piece_on_the_chessboard[i][j] = "knight_white"
+							# Déselectionne la pièce après le déplacement
+							piece_select = "No piece selected"
+							get_node("Sound_piece_move").play()
+							
+							print(piece_select)
+							print("i: ", i)
+							print("j: ", j)
+							print(position_piece_on_the_chessboard)
+							#Envoie un signal à la scène plateau_echec pour mettre à jour le tour de toutes les pièces et
+							#Et la position dans le tableau.
+							emit_signal("opponent_turned",position_piece_on_the_chessboard)
 					
-					else:
-						piece_select = "No piece selected"
-						print(piece_select)
+						else:
+							piece_select = "No piece selected"
+							print(piece_select)
 						
 				elif piece_protects_against_an_attack == true:
 					piece_select = "No piece selected"
@@ -338,7 +152,6 @@ func _input(event):
 				
 				if piece_protects_against_an_attack == false:
 					#Vérifie qu'on clique bien sur la bonne case
-					#Déplacement en haut à droite
 					if mouse_pos.x >= (attacker_position_shift_j - j) * 100 and mouse_pos.x <= (attacker_position_shift_j - j) * 100 + move_one_square\
 					and mouse_pos.y >= (attacker_position_shift_i - i) * 100 and mouse_pos.y <= (attacker_position_shift_i - i) * 100 + move_one_square \
 					and (position_piece_on_the_chessboard[attacker_position_shift_i][attacker_position_shift_j] == "0" or position_piece_on_the_chessboard[attacker_position_shift_i][attacker_position_shift_j] == "pawn_black"\
@@ -370,238 +183,13 @@ func _input(event):
 						#Et la position dans le tableau.
 						emit_signal("opponent_turned",position_piece_on_the_chessboard)
 						
-					#Déplacement en haut à gauche
-					elif mouse_pos.x >= (attacker_position_shift_j - j) * 100 and mouse_pos.x <= (attacker_position_shift_j - j) * 100 + move_one_square\
-					and mouse_pos.y >= (attacker_position_shift_i - i) * 100 and mouse_pos.y <= (attacker_position_shift_i - i) * 100 + move_one_square \
-					and (position_piece_on_the_chessboard[attacker_position_shift_i][attacker_position_shift_j] == "0" or position_piece_on_the_chessboard[attacker_position_shift_i][attacker_position_shift_j] == "pawn_black"\
-					or position_piece_on_the_chessboard[attacker_position_shift_i][attacker_position_shift_j] == "knight_black" or position_piece_on_the_chessboard[attacker_position_shift_i][attacker_position_shift_j] == "bishop_black"\
-					or position_piece_on_the_chessboard[attacker_position_shift_i][attacker_position_shift_j] == "rook_black" or position_piece_on_the_chessboard[attacker_position_shift_i][attacker_position_shift_j] == "queen_black"):
-						#Bouge la pièce de move_one_square = 100 en y
-						move_local_y((attacker_position_shift_i - i) * 100)
-						move_local_x((attacker_position_shift_j - j) * 100)
-						#Met à jour la position de la pièce dans le tableau avant déplacement
-						position_piece_on_the_chessboard[i][j] = "0"
-						i = attacker_position_shift_i
-						j = attacker_position_shift_j
-						#Met à jour la position de la pièce dans le tableau après déplacement
-						position_piece_on_the_chessboard[i][j] = "knight_white"
-						
-						attacker_position_shift_i = 0
-						attacker_position_shift_j = 0
-						attacker_position_shift2_i = 0
-						attacker_position_shift2_j = 0
-						# Déselectionne la pièce après le déplacement
-						piece_select = "No piece selected"
-						get_node("Sound_piece_move").play()
-						
-						print(piece_select)
-						print("i: ", i)
-						print("j: ", j)
-						print(position_piece_on_the_chessboard)
-						#Envoie un signal à la scène plateau_echec pour mettre à jour le tour de toutes les pièces et
-						#Et la position dans le tableau.
-						emit_signal("opponent_turned",position_piece_on_the_chessboard)
-					
-					#Déplacement vers la droite en haut
-					elif mouse_pos.x >= (attacker_position_shift_j - j) * 100 and mouse_pos.x <= (attacker_position_shift_j - j) * 100 + move_one_square\
-					and mouse_pos.y >= (attacker_position_shift_i - i) * 100 and mouse_pos.y <= (attacker_position_shift_i - i) * 100 + move_one_square \
-					and (position_piece_on_the_chessboard[attacker_position_shift_i][attacker_position_shift_j] == "0" or position_piece_on_the_chessboard[attacker_position_shift_i][attacker_position_shift_j] == "pawn_black"\
-					or position_piece_on_the_chessboard[attacker_position_shift_i][attacker_position_shift_j] == "knight_black" or position_piece_on_the_chessboard[attacker_position_shift_i][attacker_position_shift_j] == "bishop_black"\
-					or position_piece_on_the_chessboard[attacker_position_shift_i][attacker_position_shift_j] == "rook_black" or position_piece_on_the_chessboard[attacker_position_shift_i][attacker_position_shift_j] == "queen_black"):
-						#Bouge la pièce de move_one_square = 100 en y
-						move_local_y((attacker_position_shift_i - i) * 100)
-						move_local_x((attacker_position_shift_j - j) * 100)
-						#Met à jour la position de la pièce dans le tableau avant déplacement
-						position_piece_on_the_chessboard[i][j] = "0"
-						i = attacker_position_shift_i
-						j = attacker_position_shift_j
-						#Met à jour la position de la pièce dans le tableau après déplacement
-						position_piece_on_the_chessboard[i][j] = "knight_white"
-						
-						attacker_position_shift_i = 0
-						attacker_position_shift_j = 0
-						attacker_position_shift2_i = 0
-						attacker_position_shift2_j = 0
-						# Déselectionne la pièce après le déplacement
-						piece_select = "No piece selected"
-						get_node("Sound_piece_move").play()
-						
-						print(piece_select)
-						print("i: ", i)
-						print("j: ", j)
-						print(position_piece_on_the_chessboard)
-						#Envoie un signal à la scène plateau_echec pour mettre à jour le tour de toutes les pièces et
-						#Et la position dans le tableau.
-						emit_signal("opponent_turned",position_piece_on_the_chessboard)
-						
-					#Déplacement vers la droite en bas
-					elif mouse_pos.x >= (attacker_position_shift_j - j) * 100 and mouse_pos.x <= (attacker_position_shift_j - j) * 100 + move_one_square\
-					and mouse_pos.y >= (attacker_position_shift_i - i) * 100 and mouse_pos.y <= (attacker_position_shift_i - i) * 100 + move_one_square \
-					and (position_piece_on_the_chessboard[attacker_position_shift_i][attacker_position_shift_j] == "0" or position_piece_on_the_chessboard[attacker_position_shift_i][attacker_position_shift_j] == "pawn_black"\
-					or position_piece_on_the_chessboard[attacker_position_shift_i][attacker_position_shift_j] == "knight_black" or position_piece_on_the_chessboard[attacker_position_shift_i][attacker_position_shift_j] == "bishop_black"\
-					or position_piece_on_the_chessboard[attacker_position_shift_i][attacker_position_shift_j] == "rook_black" or position_piece_on_the_chessboard[attacker_position_shift_i][attacker_position_shift_j] == "queen_black"):
-						#Bouge la pièce de move_one_square = 100 en y
-						move_local_y((attacker_position_shift_i - i) * 100)
-						move_local_x((attacker_position_shift_j - j) * 100)
-						#Met à jour la position de la pièce dans le tableau avant déplacement
-						position_piece_on_the_chessboard[i][j] = "0"
-						i = attacker_position_shift_i
-						j = attacker_position_shift_j
-						#Met à jour la position de la pièce dans le tableau après déplacement
-						position_piece_on_the_chessboard[i][j] = "knight_white"
-						
-						attacker_position_shift_i = 0
-						attacker_position_shift_j = 0
-						attacker_position_shift2_i = 0
-						attacker_position_shift2_j = 0
-						# Déselectionne la pièce après le déplacement
-						piece_select = "No piece selected"
-						get_node("Sound_piece_move").play()
-						
-						print(piece_select)
-						print("i: ", i)
-						print("j: ", j)
-						print(position_piece_on_the_chessboard)
-						#Envoie un signal à la scène plateau_echec pour mettre à jour le tour de toutes les pièces et
-						#Et la position dans le tableau.
-						emit_signal("opponent_turned",position_piece_on_the_chessboard)
-						
-					#Déplacement en bas à droite
-					elif mouse_pos.x >= (attacker_position_shift_j - j) * 100 and mouse_pos.x <= (attacker_position_shift_j - j) * 100 + move_one_square\
-					and mouse_pos.y >= (attacker_position_shift_i - i) * 100 and mouse_pos.y <= (attacker_position_shift_i - i) * 100 + move_one_square \
-					and (position_piece_on_the_chessboard[attacker_position_shift_i][attacker_position_shift_j] == "0" or position_piece_on_the_chessboard[attacker_position_shift_i][attacker_position_shift_j] == "pawn_black"\
-					or position_piece_on_the_chessboard[attacker_position_shift_i][attacker_position_shift_j] == "knight_black" or position_piece_on_the_chessboard[attacker_position_shift_i][attacker_position_shift_j] == "bishop_black"\
-					or position_piece_on_the_chessboard[attacker_position_shift_i][attacker_position_shift_j] == "rook_black" or position_piece_on_the_chessboard[attacker_position_shift_i][attacker_position_shift_j] == "queen_black"):
-						#Bouge la pièce de move_one_square = 100 en y
-						move_local_y((attacker_position_shift_i - i) * 100)
-						move_local_x((attacker_position_shift_j - j) * 100)
-						#Met à jour la position de la pièce dans le tableau avant déplacement
-						position_piece_on_the_chessboard[i][j] = "0"
-						i = attacker_position_shift_i
-						j = attacker_position_shift_j
-						#Met à jour la position de la pièce dans le tableau après déplacement
-						position_piece_on_the_chessboard[i][j] = "knight_white"
-						
-						attacker_position_shift_i = 0
-						attacker_position_shift_j = 0
-						attacker_position_shift2_i = 0
-						attacker_position_shift2_j = 0
-						# Déselectionne la pièce après le déplacement
-						piece_select = "No piece selected"
-						get_node("Sound_piece_move").play()
-						
-						print(piece_select)
-						print("i: ", i)
-						print("j: ", j)
-						print(position_piece_on_the_chessboard)
-						#Envoie un signal à la scène plateau_echec pour mettre à jour le tour de toutes les pièces et
-						#Et la position dans le tableau.
-						emit_signal("opponent_turned",position_piece_on_the_chessboard)
-						
-					#Déplacement en bas à gauche
-					elif mouse_pos.x >= (attacker_position_shift_j - j) * 100 and mouse_pos.x <= (attacker_position_shift_j - j) * 100 + move_one_square\
-					and mouse_pos.y >= (attacker_position_shift_i - i) * 100 and mouse_pos.y <= (attacker_position_shift_i - i) * 100 + move_one_square \
-					and (position_piece_on_the_chessboard[attacker_position_shift_i][attacker_position_shift_j] == "0" or position_piece_on_the_chessboard[attacker_position_shift_i][attacker_position_shift_j] == "pawn_black"\
-					or position_piece_on_the_chessboard[attacker_position_shift_i][attacker_position_shift_j] == "knight_black" or position_piece_on_the_chessboard[attacker_position_shift_i][attacker_position_shift_j] == "bishop_black"\
-					or position_piece_on_the_chessboard[attacker_position_shift_i][attacker_position_shift_j] == "rook_black" or position_piece_on_the_chessboard[attacker_position_shift_i][attacker_position_shift_j] == "queen_black"):
-						#Bouge la pièce de move_one_square = 100 en y
-						move_local_y((attacker_position_shift_i - i) * 100)
-						move_local_x((attacker_position_shift_j - j) * 100)
-						#Met à jour la position de la pièce dans le tableau avant déplacement
-						position_piece_on_the_chessboard[i][j] = "0"
-						i = attacker_position_shift_i
-						j = attacker_position_shift_j
-						#Met à jour la position de la pièce dans le tableau après déplacement
-						position_piece_on_the_chessboard[i][j] = "knight_white"
-						
-						attacker_position_shift_i = 0
-						attacker_position_shift_j = 0
-						attacker_position_shift2_i = 0
-						attacker_position_shift2_j = 0
-						# Déselectionne la pièce après le déplacement
-						piece_select = "No piece selected"
-						get_node("Sound_piece_move").play()
-						
-						print(piece_select)
-						print("i: ", i)
-						print("j: ", j)
-						print(position_piece_on_the_chessboard)
-						#Envoie un signal à la scène plateau_echec pour mettre à jour le tour de toutes les pièces et
-						#Et la position dans le tableau.
-						emit_signal("opponent_turned",position_piece_on_the_chessboard)
-						
-					#Déplacement vers la gauche en haut
-					elif mouse_pos.x >= (attacker_position_shift_j - j) * 100 and mouse_pos.x <= (attacker_position_shift_j - j) * 100 + move_one_square\
-					and mouse_pos.y >= (attacker_position_shift_i - i) * 100 and mouse_pos.y <= (attacker_position_shift_i - i) * 100 + move_one_square \
-					and (position_piece_on_the_chessboard[attacker_position_shift_i][attacker_position_shift_j] == "0" or position_piece_on_the_chessboard[attacker_position_shift_i][attacker_position_shift_j] == "pawn_black"\
-					or position_piece_on_the_chessboard[attacker_position_shift_i][attacker_position_shift_j] == "knight_black" or position_piece_on_the_chessboard[attacker_position_shift_i][attacker_position_shift_j] == "bishop_black"\
-					or position_piece_on_the_chessboard[attacker_position_shift_i][attacker_position_shift_j] == "rook_black" or position_piece_on_the_chessboard[attacker_position_shift_i][attacker_position_shift_j] == "queen_black"):
-						#Bouge la pièce de move_one_square = 100 en y
-						move_local_y((attacker_position_shift_i - i) * 100)
-						move_local_x((attacker_position_shift_j - j) * 100)
-						#Met à jour la position de la pièce dans le tableau avant déplacement
-						position_piece_on_the_chessboard[i][j] = "0"
-						i = attacker_position_shift_i
-						j = attacker_position_shift_j
-						#Met à jour la position de la pièce dans le tableau après déplacement
-						position_piece_on_the_chessboard[i][j] = "knight_white"
-						
-						attacker_position_shift_i = 0
-						attacker_position_shift_j = 0
-						attacker_position_shift2_i = 0
-						attacker_position_shift2_j = 0
-						# Déselectionne la pièce après le déplacement
-						piece_select = "No piece selected"
-						get_node("Sound_piece_move").play()
-						
-						print(piece_select)
-						print("i: ", i)
-						print("j: ", j)
-						print(position_piece_on_the_chessboard)
-						
-						#Envoie un signal à la scène plateau_echec pour mettre à jour le tour de toutes les pièces et
-						#Et la position dans le tableau.
-						emit_signal("opponent_turned",position_piece_on_the_chessboard)
-						
-					#Déplacement vers la gauche en bas
-					elif mouse_pos.x >= (attacker_position_shift_j - j) * 100 and mouse_pos.x <= (attacker_position_shift_j - j) * 100 + move_one_square\
-					and mouse_pos.y >= (attacker_position_shift_i - i) * 100 and mouse_pos.y <= (attacker_position_shift_i - i) * 100 + move_one_square \
-					and (position_piece_on_the_chessboard[attacker_position_shift_i][attacker_position_shift_j] == "0" or position_piece_on_the_chessboard[attacker_position_shift_i][attacker_position_shift_j] == "pawn_black"\
-					or position_piece_on_the_chessboard[attacker_position_shift_i][attacker_position_shift_j] == "knight_black" or position_piece_on_the_chessboard[attacker_position_shift_i][attacker_position_shift_j] == "bishop_black"\
-					or position_piece_on_the_chessboard[attacker_position_shift_i][attacker_position_shift_j] == "rook_black" or position_piece_on_the_chessboard[attacker_position_shift_i][attacker_position_shift_j] == "queen_black"):
-						#Bouge la pièce de move_one_square = 100 en y
-						move_local_y((attacker_position_shift_i - i) * 100)
-						move_local_x((attacker_position_shift_j - j) * 100)
-						#Met à jour la position de la pièce dans le tableau avant déplacement
-						position_piece_on_the_chessboard[i][j] = "0"
-						i = attacker_position_shift_i
-						j = attacker_position_shift_j
-						#Met à jour la position de la pièce dans le tableau après déplacement
-						position_piece_on_the_chessboard[i][j] = "knight_white"
-						
-						attacker_position_shift_i = 0
-						attacker_position_shift_j = 0
-						attacker_position_shift2_i = 0
-						attacker_position_shift2_j = 0
-						# Déselectionne la pièce après le déplacement
-						piece_select = "No piece selected"
-						get_node("Sound_piece_move").play()
-						
-						print(piece_select)
-						print("i: ", i)
-						print("j: ", j)
-						print(position_piece_on_the_chessboard)
-						#Envoie un signal à la scène plateau_echec pour mettre à jour le tour de toutes les pièces et
-						#Et la position dans le tableau.
-						emit_signal("opponent_turned",position_piece_on_the_chessboard)
-					
 					else:
 						piece_select = "No piece selected"
 						print(piece_select)
 					###############################################################################################
 					###############################################################################################
 					###############################################################################################
-				#Seconde case à protéger si elle existe
+					#Seconde case à protéger si elle existe
 					#Déplacement en haut à droite
 					if mouse_pos.x >= (attacker_position_shift2_j - j) * 100 and mouse_pos.x <= (attacker_position_shift2_j - j) * 100 + move_one_square\
 					and mouse_pos.y >= (attacker_position_shift2_i - i) * 100 and mouse_pos.y <= (attacker_position_shift2_i - i) * 100 + move_one_square \
@@ -634,234 +222,10 @@ func _input(event):
 						#Et la position dans le tableau.
 						emit_signal("opponent_turned",position_piece_on_the_chessboard)
 						
-					#Déplacement en haut à gauche
-					elif mouse_pos.x >= (attacker_position_shift2_j - j) * 100 and mouse_pos.x <= (attacker_position_shift2_j - j) * 100 + move_one_square\
-					and mouse_pos.y >= (attacker_position_shift2_i - i) * 100 and mouse_pos.y <= (attacker_position_shift2_i - i) * 100 + move_one_square \
-					and (position_piece_on_the_chessboard[attacker_position_shift2_i][attacker_position_shift2_j] == "0" or position_piece_on_the_chessboard[attacker_position_shift2_i][attacker_position_shift2_j] == "pawn_black"\
-					or position_piece_on_the_chessboard[attacker_position_shift2_i][attacker_position_shift2_j] == "knight_black" or position_piece_on_the_chessboard[attacker_position_shift2_i][attacker_position_shift2_j] == "bishop_black"\
-					or position_piece_on_the_chessboard[attacker_position_shift2_i][attacker_position_shift2_j] == "rook_black" or position_piece_on_the_chessboard[attacker_position_shift2_i][attacker_position_shift2_j] == "queen_black"):
-						#Bouge la pièce de move_one_square = 100 en y
-						move_local_y((attacker_position_shift2_i - i) * 100)
-						move_local_x((attacker_position_shift2_j - j) * 100)
-						#Met à jour la position de la pièce dans le tableau avant déplacement
-						position_piece_on_the_chessboard[i][j] = "0"
-						i = attacker_position_shift2_i
-						j = attacker_position_shift2_j
-						#Met à jour la position de la pièce dans le tableau après déplacement
-						position_piece_on_the_chessboard[i][j] = "knight_white"
-						
-						attacker_position_shift_i = 0
-						attacker_position_shift_j = 0
-						attacker_position_shift2_i = 0
-						attacker_position_shift2_j = 0
-						# Déselectionne la pièce après le déplacement
-						piece_select = "No piece selected"
-						get_node("Sound_piece_move").play()
-						
-						print(piece_select)
-						print("i: ", i)
-						print("j: ", j)
-						print(position_piece_on_the_chessboard)
-						#Envoie un signal à la scène plateau_echec pour mettre à jour le tour de toutes les pièces et
-						#Et la position dans le tableau.
-						emit_signal("opponent_turned",position_piece_on_the_chessboard)
-					
-					#Déplacement vers la droite en haut
-					elif mouse_pos.x >= (attacker_position_shift2_j - j) * 100 and mouse_pos.x <= (attacker_position_shift2_j - j) * 100 + move_one_square\
-					and mouse_pos.y >= (attacker_position_shift2_i - i) * 100 and mouse_pos.y <= (attacker_position_shift2_i - i) * 100 + move_one_square \
-					and (position_piece_on_the_chessboard[attacker_position_shift2_i][attacker_position_shift2_j] == "0" or position_piece_on_the_chessboard[attacker_position_shift2_i][attacker_position_shift2_j] == "pawn_black"\
-					or position_piece_on_the_chessboard[attacker_position_shift2_i][attacker_position_shift2_j] == "knight_black" or position_piece_on_the_chessboard[attacker_position_shift2_i][attacker_position_shift2_j] == "bishop_black"\
-					or position_piece_on_the_chessboard[attacker_position_shift2_i][attacker_position_shift2_j] == "rook_black" or position_piece_on_the_chessboard[attacker_position_shift2_i][attacker_position_shift2_j] == "queen_black"):
-						#Bouge la pièce de move_one_square = 100 en y
-						move_local_y((attacker_position_shift2_i - i) * 100)
-						move_local_x((attacker_position_shift2_j - j) * 100)
-						#Met à jour la position de la pièce dans le tableau avant déplacement
-						position_piece_on_the_chessboard[i][j] = "0"
-						i = attacker_position_shift2_i
-						j = attacker_position_shift2_j
-						#Met à jour la position de la pièce dans le tableau après déplacement
-						position_piece_on_the_chessboard[i][j] = "knight_white"
-						
-						attacker_position_shift_i = 0
-						attacker_position_shift_j = 0
-						attacker_position_shift2_i = 0
-						attacker_position_shift2_j = 0
-						# Déselectionne la pièce après le déplacement
-						piece_select = "No piece selected"
-						get_node("Sound_piece_move").play()
-						
-						print(piece_select)
-						print("i: ", i)
-						print("j: ", j)
-						print(position_piece_on_the_chessboard)
-						#Envoie un signal à la scène plateau_echec pour mettre à jour le tour de toutes les pièces et
-						#Et la position dans le tableau.
-						emit_signal("opponent_turned",position_piece_on_the_chessboard)
-						
-					#Déplacement vers la droite en bas
-					elif mouse_pos.x >= (attacker_position_shift2_j - j) * 100 and mouse_pos.x <= (attacker_position_shift2_j - j) * 100 + move_one_square\
-					and mouse_pos.y >= (attacker_position_shift2_i - i) * 100 and mouse_pos.y <= (attacker_position_shift2_i - i) * 100 + move_one_square \
-					and (position_piece_on_the_chessboard[attacker_position_shift2_i][attacker_position_shift2_j] == "0" or position_piece_on_the_chessboard[attacker_position_shift2_i][attacker_position_shift2_j] == "pawn_black"\
-					or position_piece_on_the_chessboard[attacker_position_shift2_i][attacker_position_shift2_j] == "knight_black" or position_piece_on_the_chessboard[attacker_position_shift2_i][attacker_position_shift2_j] == "bishop_black"\
-					or position_piece_on_the_chessboard[attacker_position_shift2_i][attacker_position_shift2_j] == "rook_black" or position_piece_on_the_chessboard[attacker_position_shift2_i][attacker_position_shift2_j] == "queen_black"):
-						#Bouge la pièce de move_one_square = 100 en y
-						move_local_y((attacker_position_shift2_i - i) * 100)
-						move_local_x((attacker_position_shift2_j - j) * 100)
-						#Met à jour la position de la pièce dans le tableau avant déplacement
-						position_piece_on_the_chessboard[i][j] = "0"
-						i = attacker_position_shift2_i
-						j = attacker_position_shift2_j
-						#Met à jour la position de la pièce dans le tableau après déplacement
-						position_piece_on_the_chessboard[i][j] = "knight_white"
-						
-						attacker_position_shift_i = 0
-						attacker_position_shift_j = 0
-						attacker_position_shift2_i = 0
-						attacker_position_shift2_j = 0
-						# Déselectionne la pièce après le déplacement
-						piece_select = "No piece selected"
-						get_node("Sound_piece_move").play()
-						
-						print(piece_select)
-						print("i: ", i)
-						print("j: ", j)
-						print(position_piece_on_the_chessboard)
-						#Envoie un signal à la scène plateau_echec pour mettre à jour le tour de toutes les pièces et
-						#Et la position dans le tableau.
-						emit_signal("opponent_turned",position_piece_on_the_chessboard)
-						
-					#Déplacement en bas à droite
-					elif mouse_pos.x >= (attacker_position_shift2_j - j) * 100 and mouse_pos.x <= (attacker_position_shift2_j - j) * 100 + move_one_square\
-					and mouse_pos.y >= (attacker_position_shift2_i - i) * 100 and mouse_pos.y <= (attacker_position_shift2_i - i) * 100 + move_one_square \
-					and (position_piece_on_the_chessboard[attacker_position_shift2_i][attacker_position_shift2_j] == "0" or position_piece_on_the_chessboard[attacker_position_shift2_i][attacker_position_shift2_j] == "pawn_black"\
-					or position_piece_on_the_chessboard[attacker_position_shift2_i][attacker_position_shift2_j] == "knight_black" or position_piece_on_the_chessboard[attacker_position_shift2_i][attacker_position_shift2_j] == "bishop_black"\
-					or position_piece_on_the_chessboard[attacker_position_shift2_i][attacker_position_shift2_j] == "rook_black" or position_piece_on_the_chessboard[attacker_position_shift2_i][attacker_position_shift2_j] == "queen_black"):
-						#Bouge la pièce de move_one_square = 100 en y
-						move_local_y((attacker_position_shift2_i - i) * 100)
-						move_local_x((attacker_position_shift2_j - j) * 100)
-						#Met à jour la position de la pièce dans le tableau avant déplacement
-						position_piece_on_the_chessboard[i][j] = "0"
-						i = attacker_position_shift2_i
-						j = attacker_position_shift2_j
-						#Met à jour la position de la pièce dans le tableau après déplacement
-						position_piece_on_the_chessboard[i][j] = "knight_white"
-						
-						attacker_position_shift_i = 0
-						attacker_position_shift_j = 0
-						attacker_position_shift2_i = 0
-						attacker_position_shift2_j = 0
-						# Déselectionne la pièce après le déplacement
-						piece_select = "No piece selected"
-						get_node("Sound_piece_move").play()
-						
-						print(piece_select)
-						print("i: ", i)
-						print("j: ", j)
-						print(position_piece_on_the_chessboard)
-						#Envoie un signal à la scène plateau_echec pour mettre à jour le tour de toutes les pièces et
-						#Et la position dans le tableau.
-						emit_signal("opponent_turned",position_piece_on_the_chessboard)
-						
-					#Déplacement en bas à gauche
-					elif mouse_pos.x >= (attacker_position_shift2_j - j) * 100 and mouse_pos.x <= (attacker_position_shift2_j - j) * 100 + move_one_square\
-					and mouse_pos.y >= (attacker_position_shift2_i - i) * 100 and mouse_pos.y <= (attacker_position_shift2_i - i) * 100 + move_one_square \
-					and (position_piece_on_the_chessboard[attacker_position_shift2_i][attacker_position_shift2_j] == "0" or position_piece_on_the_chessboard[attacker_position_shift2_i][attacker_position_shift2_j] == "pawn_black"\
-					or position_piece_on_the_chessboard[attacker_position_shift2_i][attacker_position_shift2_j] == "knight_black" or position_piece_on_the_chessboard[attacker_position_shift2_i][attacker_position_shift2_j] == "bishop_black"\
-					or position_piece_on_the_chessboard[attacker_position_shift2_i][attacker_position_shift2_j] == "rook_black" or position_piece_on_the_chessboard[attacker_position_shift2_i][attacker_position_shift2_j] == "queen_black"):
-						#Bouge la pièce de move_one_square = 100 en y
-						move_local_y((attacker_position_shift2_i - i) * 100)
-						move_local_x((attacker_position_shift2_j - j) * 100)
-						#Met à jour la position de la pièce dans le tableau avant déplacement
-						position_piece_on_the_chessboard[i][j] = "0"
-						i = attacker_position_shift2_i
-						j = attacker_position_shift2_j
-						#Met à jour la position de la pièce dans le tableau après déplacement
-						position_piece_on_the_chessboard[i][j] = "knight_white"
-						
-						attacker_position_shift_i = 0
-						attacker_position_shift_j = 0
-						attacker_position_shift2_i = 0
-						attacker_position_shift2_j = 0
-						# Déselectionne la pièce après le déplacement
-						piece_select = "No piece selected"
-						get_node("Sound_piece_move").play()
-						
-						print(piece_select)
-						print("i: ", i)
-						print("j: ", j)
-						print(position_piece_on_the_chessboard)
-						#Envoie un signal à la scène plateau_echec pour mettre à jour le tour de toutes les pièces et
-						#Et la position dans le tableau.
-						emit_signal("opponent_turned",position_piece_on_the_chessboard)
-						
-					#Déplacement vers la gauche en haut
-					elif mouse_pos.x >= (attacker_position_shift2_j - j) * 100 and mouse_pos.x <= (attacker_position_shift2_j - j) * 100 + move_one_square\
-					and mouse_pos.y >= (attacker_position_shift2_i - i) * 100 and mouse_pos.y <= (attacker_position_shift2_i - i) * 100 + move_one_square \
-					and (position_piece_on_the_chessboard[attacker_position_shift2_i][attacker_position_shift2_j] == "0" or position_piece_on_the_chessboard[attacker_position_shift2_i][attacker_position_shift2_j] == "pawn_black"\
-					or position_piece_on_the_chessboard[attacker_position_shift2_i][attacker_position_shift2_j] == "knight_black" or position_piece_on_the_chessboard[attacker_position_shift2_i][attacker_position_shift2_j] == "bishop_black"\
-					or position_piece_on_the_chessboard[attacker_position_shift2_i][attacker_position_shift2_j] == "rook_black" or position_piece_on_the_chessboard[attacker_position_shift2_i][attacker_position_shift2_j] == "queen_black"):
-						#Bouge la pièce de move_one_square = 100 en y
-						move_local_y((attacker_position_shift2_i - i) * 100)
-						move_local_x((attacker_position_shift2_j - j) * 100)
-						#Met à jour la position de la pièce dans le tableau avant déplacement
-						position_piece_on_the_chessboard[i][j] = "0"
-						i = attacker_position_shift2_i
-						j = attacker_position_shift2_j
-						#Met à jour la position de la pièce dans le tableau après déplacement
-						position_piece_on_the_chessboard[i][j] = "knight_white"
-						
-						attacker_position_shift_i = 0
-						attacker_position_shift_j = 0
-						attacker_position_shift2_i = 0
-						attacker_position_shift2_j = 0
-						# Déselectionne la pièce après le déplacement
-						piece_select = "No piece selected"
-						get_node("Sound_piece_move").play()
-						
-						print(piece_select)
-						print("i: ", i)
-						print("j: ", j)
-						print(position_piece_on_the_chessboard)
-						
-						#Envoie un signal à la scène plateau_echec pour mettre à jour le tour de toutes les pièces et
-						#Et la position dans le tableau.
-						emit_signal("opponent_turned",position_piece_on_the_chessboard)
-						
-					#Déplacement vers la gauche en bas
-					elif mouse_pos.x >= (attacker_position_shift2_j - j) * 100 and mouse_pos.x <= (attacker_position_shift2_j - j) * 100 + move_one_square\
-					and mouse_pos.y >= (attacker_position_shift2_i - i) * 100 and mouse_pos.y <= (attacker_position_shift2_i - i) * 100 + move_one_square \
-					and (position_piece_on_the_chessboard[attacker_position_shift2_i][attacker_position_shift2_j] == "0" or position_piece_on_the_chessboard[attacker_position_shift2_i][attacker_position_shift2_j] == "pawn_black"\
-					or position_piece_on_the_chessboard[attacker_position_shift2_i][attacker_position_shift2_j] == "knight_black" or position_piece_on_the_chessboard[attacker_position_shift2_i][attacker_position_shift2_j] == "bishop_black"\
-					or position_piece_on_the_chessboard[attacker_position_shift2_i][attacker_position_shift2_j] == "rook_black" or position_piece_on_the_chessboard[attacker_position_shift2_i][attacker_position_shift2_j] == "queen_black"):
-						#Bouge la pièce de move_one_square = 100 en y
-						move_local_y((attacker_position_shift2_i - i) * 100)
-						move_local_x((attacker_position_shift2_j - j) * 100)
-						#Met à jour la position de la pièce dans le tableau avant déplacement
-						position_piece_on_the_chessboard[i][j] = "0"
-						i = attacker_position_shift2_i
-						j = attacker_position_shift2_j
-						#Met à jour la position de la pièce dans le tableau après déplacement
-						position_piece_on_the_chessboard[i][j] = "knight_white"
-						
-						attacker_position_shift_i = 0
-						attacker_position_shift_j = 0
-						attacker_position_shift2_i = 0
-						attacker_position_shift2_j = 0
-						# Déselectionne la pièce après le déplacement
-						piece_select = "No piece selected"
-						get_node("Sound_piece_move").play()
-						
-						print(piece_select)
-						print("i: ", i)
-						print("j: ", j)
-						print(position_piece_on_the_chessboard)
-						#Envoie un signal à la scène plateau_echec pour mettre à jour le tour de toutes les pièces et
-						#Et la position dans le tableau.
-						emit_signal("opponent_turned",position_piece_on_the_chessboard)
-					
 					else:
 						piece_select = "No piece selected"
 						print(piece_select)
+						
 				elif piece_protects_against_an_attack == true:
 					piece_select = "No piece selected"
 					print(piece_select)
